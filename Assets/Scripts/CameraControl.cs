@@ -10,23 +10,23 @@ public class CameraControl : MonoBehaviour
     private Vector3 offset;
     private Vector3 position;
 
-    private float distance = 15.0f;
-    private float yOffset = 3.5f;
-    private float smoothSpeed = 7.5f;
+    [SerializeField] private float distance = 15.0f;
+    [SerializeField] private float yOffset = 3.5f;
+    [SerializeField] private float smoothSpeed = 7.5f;
 
    private void Start()
     {
         offset = new Vector3(0, yOffset, -1f * distance);
+        yOffset = 0;
+
     }
 
-   private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
             movCamera(true);
         else if (Input.GetKeyDown(KeyCode.RightArrow))
             movCamera(false);
-          
-        
     }
     private void FixedUpdate()
     {

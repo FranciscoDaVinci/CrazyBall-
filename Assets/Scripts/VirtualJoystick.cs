@@ -51,12 +51,4 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     {
         OnDrag(ped);
     }
-
-   
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
