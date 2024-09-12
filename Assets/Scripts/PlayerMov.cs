@@ -7,6 +7,7 @@ public class PlayerMov : MonoBehaviour
     public float moveSpeed = 5.0f;
     public float drag = 0.5f;
     public float roationSpeed = 25.0f;
+    public VirtualJoystick moveJoystick;
 
     private Rigidbody controller;
     private Transform camTransform;
@@ -30,6 +31,11 @@ public class PlayerMov : MonoBehaviour
 
         if (dir.magnitude > 1)
             dir.Normalize();
+
+        if (moveJoystick.InputDirection != Vector3.zero)
+        {
+            dir = moveJoystick.InputDirection;
+        }
 
         controller.AddForce(dir * moveSpeed);
 
