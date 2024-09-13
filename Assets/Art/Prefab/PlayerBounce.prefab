@@ -117,8 +117,8 @@ Rigidbody:
   m_GameObject: {fileID: 5299558102460970425}
   serializedVersion: 4
   m_Mass: 0.5
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 2
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -163,7 +163,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad13ee4623764504290d5b2e88215bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  drag: 1.5
-  roationSpeed: 25
+  moveSpeed: 1
   moveJoystick: {fileID: 7228755328112209028, guid: 299576d4ae61a364eae04561b0565cad, type: 3}

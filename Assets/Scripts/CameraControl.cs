@@ -4,20 +4,34 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-
-    public Transform lookAt;
+    public Transform LookAt { get { return instance.lookAt; } }
+    [SerializeField] Transform lookAt;
 
     private Vector3 offset;
     private Vector3 position;
 
-    private Vector2 touchPosition;
+    //private Vector2 touchPosition;
     [SerializeField] private float swipeResistance = 200.0f;
 
     [SerializeField] private float distance = 15.0f;
     [SerializeField] private float yOffset = 3.5f;
     [SerializeField] private float smoothSpeed = 7.5f;
 
-   private void Start()
+    public static CameraControl instance;
+
+    private void Awake()
+    {
+        if (instance == null) {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }    
+    }
+
+    private void Start()
     {
         offset = new Vector3(0, yOffset, -1f * distance);
         yOffset = 0;
@@ -31,21 +45,22 @@ public class CameraControl : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow))
             movCamera(false);
 
-        if(Input.GetMouseButtonDown (0) || Input.GetMouseButtonDown (1))
+        /*if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             touchPosition = Input.mousePosition;
         }
-        if(Input.GetMouseButtonUp (0) || Input.GetMouseButtonUp (1))
+        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
             float swipeForce = touchPosition.x - Input.mousePosition.x;
-            if(Mathf.Abs (swipeForce) > swipeResistance)
+            if (Mathf.Abs(swipeForce) > swipeResistance)
             {
                 if (swipeForce < 0)
                     movCamera(true);
                 else
                     movCamera(false);
             }
-        }
+        }*/
+        //CameraControl.instance;
     }
     private void FixedUpdate()
     {

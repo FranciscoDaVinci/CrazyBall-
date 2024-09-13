@@ -7,7 +7,7 @@ public class Buttons : MonoBehaviour
     [SerializeField] GameObject PlayerNormal;
     [SerializeField] GameObject PlayerSpikes;
     [SerializeField] GameObject PlayerBounce;
-    public int Estate;
+    [SerializeField] int Estate;
 
     void Update()
     {
@@ -17,6 +17,7 @@ public class Buttons : MonoBehaviour
             {
                 Destroy(gameObject);
                 Instantiate(PlayerNormal, transform.position, Quaternion.identity);
+                _ = CameraControl.instance;
                 Estate = 1;
             }
 
@@ -33,6 +34,7 @@ public class Buttons : MonoBehaviour
             {
                 Destroy(gameObject);
                 Instantiate(PlayerSpikes, transform.position, Quaternion.identity);
+                _ = CameraControl.instance;
                 Estate = 2;
             }
 
@@ -49,6 +51,7 @@ public class Buttons : MonoBehaviour
             {
                 Destroy(gameObject);
                 Instantiate(PlayerBounce, transform.position, Quaternion.identity);
+                _ = CameraControl.instance;
                 Estate = 3;
             }
 

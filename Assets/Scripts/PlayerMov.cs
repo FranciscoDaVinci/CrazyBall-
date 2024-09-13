@@ -1,30 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerMov : MonoBehaviour
 {
-    public float moveSpeed = 5.0f;
-    public float drag = 0.5f;
-    public float roationSpeed = 25.0f;
-    public VirtualJoystick moveJoystick;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float jumpForce;
+    //[SerializeField] Buttons Buttons;
+    [SerializeField] VirtualJoystick moveJoystick;
 
     private Rigidbody controller;
-    private Transform camTransform;
+    //private Transform camTransform;
 
     private void Start()
     {
         controller = GetComponent<Rigidbody>();
-        controller.maxAngularVelocity = roationSpeed;
-        controller.drag = drag;
-
-        camTransform = Camera.main.transform;
+        //camTransform = Camera.main.transform;
     }
 
 
     void Update()
+    {
+        Movement();
+        Jump();
+    }
+
+    private void Movement()
     {
         Vector3 dir = Vector3.zero;
 
@@ -41,8 +42,16 @@ public class PlayerMov : MonoBehaviour
 
         controller.AddForce(dir * moveSpeed);
 
-        Vector3 rotateDir = camTransform.TransformDirection(dir);
+        /*Vector3 rotateDir = camTransform.TransformDirection(dir);
         rotateDir = new Vector3(rotateDir.x, 0, rotateDir.z);
         rotateDir = rotateDir.normalized * dir.magnitude;
+        */
+    }
+
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+
+            controller.AddForce(Vector3.up * jumpForce);
     }
 }

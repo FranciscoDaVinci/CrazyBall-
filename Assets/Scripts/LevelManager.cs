@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
 
-    public GameObject gameOverUI;
-    public GameObject gameOverUI2;
+    [SerializeField] GameObject gameOverUI;
+    [SerializeField] GameObject gameOverUI2;
 
     public void gameOver()
     {
@@ -20,21 +20,18 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         Time.timeScale = 1;
-
     }
 
     public void Menu()
     {
         SceneManager.LoadScene("SampleScene");
         Time.timeScale = 1;
-
     }
 
     public void Resume(GameObject gameObject)
     {
         gameObject.SetActive(false);
         Time.timeScale = 1;
-
     }
 
     public void Pause(GameObject gameObject)

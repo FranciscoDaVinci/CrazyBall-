@@ -9,10 +9,10 @@ public class MainMenu : MonoBehaviour
     
     private Transform cameraTransform;
     private Transform cameraLookAt;
-    
-    public GameObject levelbuttonPrefab;
-    public GameObject levelbuttonControl;
-    public string sceneToLoad;
+
+    [SerializeField] GameObject levelbuttonPrefab;
+    [SerializeField] GameObject levelbuttonControl;
+    [SerializeField] string sceneToLoad;
 
     private void Start()
     {
@@ -22,9 +22,7 @@ public class MainMenu : MonoBehaviour
         {
             GameObject control = Instantiate(levelbuttonPrefab) as GameObject;
             control.GetComponent<Image>().sprite = miniatura;
-            control.transform.SetParent(levelbuttonControl.transform, false);
-
-            
+            control.transform.SetParent(levelbuttonControl.transform, false);            
         }
     }
 
