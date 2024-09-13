@@ -352,8 +352,8 @@ GameObject:
   - component: {fileID: 290782824}
   - component: {fileID: 290782823}
   m_Layer: 0
-  m_Name: Cube (21)
-  m_TagString: Untagged
+  m_Name: Win
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,11 +367,11 @@ Transform:
   m_GameObject: {fileID: 290782821}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.46, y: 0.927, z: 86.888}
+  m_LocalPosition: {x: 1.4599609, y: 2.45, z: 86.888}
   m_LocalScale: {x: 1, y: 0.33, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1327032257}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &290782823
 BoxCollider:
@@ -1843,7 +1843,6 @@ Transform:
   - {fileID: 1638848708}
   - {fileID: 1461437533}
   - {fileID: 1268125698}
-  - {fileID: 290782822}
   - {fileID: 1424772602}
   - {fileID: 1527999770}
   - {fileID: 689451615}
@@ -2861,6 +2860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookAt: {fileID: 679700273}
+  swipeResistance: 200
   distance: 15
   yOffset: 4.5
   smoothSpeed: 7.5
@@ -4495,7 +4495,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2181419798520304885, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 79.94
+      value: 85.32
       objectReference: {fileID: 0}
     - target: {fileID: 2181419798520304885, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4530,8 +4530,12 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3444121223203539942, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
+      propertyPath: WINTEXT
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444121223203539942, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3444121223203539942, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: moveJoystick
@@ -4648,3 +4652,4 @@ SceneRoots:
   - {fileID: 2013196452}
   - {fileID: 1327032257}
   - {fileID: 1881621084}
+  - {fileID: 290782822}
