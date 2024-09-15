@@ -10,7 +10,7 @@ public class CameraControl : MonoBehaviour
     private Vector3 offset;
     private Vector3 position;
 
-    //private Vector2 touchPosition;
+    private Vector2 touchPosition;
     [SerializeField] private float swipeResistance = 200.0f;
 
     [SerializeField] private float distance = 15.0f;
@@ -45,7 +45,7 @@ public class CameraControl : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.RightArrow))
             movCamera(false);
 
-        /*if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             touchPosition = Input.mousePosition;
         }
@@ -59,8 +59,7 @@ public class CameraControl : MonoBehaviour
                 else
                     movCamera(false);
             }
-        }*/
-        //CameraControl.instance;
+        }
     }
     private void FixedUpdate()
     {

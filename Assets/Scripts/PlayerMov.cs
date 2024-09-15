@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerMov : MonoBehaviour
 {
@@ -54,4 +55,5 @@ public class PlayerMov : MonoBehaviour
 
             controller.AddForce(Vector3.up * jumpForce);
     }
+
 }

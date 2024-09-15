@@ -6,40 +6,12 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public string scenetoload;
     
-    private Transform cameraTransform;
-    private Transform cameraLookAt;
-
-    [SerializeField] GameObject levelbuttonPrefab;
-    [SerializeField] GameObject levelbuttonControl;
-    [SerializeField] string sceneToLoad;
-
-    private void Start()
+    public void LoadScene()
     {
-        cameraTransform = Camera.main.transform;
-        Sprite[] miniaturas = Resources.LoadAll<Sprite>("Levels");
-        foreach (Sprite miniatura in miniaturas)
-        {
-            GameObject control = Instantiate(levelbuttonPrefab) as GameObject;
-            control.GetComponent<Image>().sprite = miniatura;
-            control.transform.SetParent(levelbuttonControl.transform, false);            
-        }
+        SceneManager.LoadScene("LevelSelector");
     }
 
-    private void Update()
-    {
-        if(cameraLookAt != null)
-        {
-            cameraTransform.rotation = Quaternion.Slerp(cameraTransform.rotation, cameraLookAt.rotation, 3 * Time.deltaTime);
-        }
-    }
-    public void LoadLevel()
-    {
-        SceneManager.LoadScene("Level1");
-    }
-
-    public void LookAtMenu(Transform menuTransform)
-    {
-        cameraLookAt = menuTransform;
-    }
+   
 }
