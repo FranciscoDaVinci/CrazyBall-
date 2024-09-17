@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
-    public Transform LookAt { get { return instance.lookAt; } }
     [SerializeField] Transform lookAt;
 
     private Vector3 offset;
@@ -16,20 +15,6 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float distance = 15.0f;
     [SerializeField] private float yOffset = 3.5f;
     [SerializeField] private float smoothSpeed = 7.5f;
-
-    public static CameraControl instance;
-
-    private void Awake()
-    {
-        if (instance == null) {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }    
-    }
 
     private void Start()
     {

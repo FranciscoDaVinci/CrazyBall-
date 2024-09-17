@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8971661776026533037}
   - component: {fileID: 1339545550704931849}
   - component: {fileID: 6469276344568616310}
-  - component: {fileID: -849573569138938189}
   - component: {fileID: 6158754741598052615}
   m_Layer: 0
   m_Name: PlayerBounce
@@ -135,22 +134,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-849573569138938189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5299558102460970425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9b139c29e0d1a429c7059671386182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerNormal: {fileID: 1064160030246394807, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-  PlayerSpikes: {fileID: 284444854585473113, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
-  PlayerBounce: {fileID: 5299558102460970425}
-  Estate: 3
 --- !u!114 &6158754741598052615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,4 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
+  jumpForce: 0
   moveJoystick: {fileID: 7228755328112209028, guid: 299576d4ae61a364eae04561b0565cad, type: 3}

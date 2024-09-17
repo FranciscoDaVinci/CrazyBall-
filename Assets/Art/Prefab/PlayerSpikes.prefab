@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1166093952619129516}
   - component: {fileID: 7743621238115371436}
   - component: {fileID: 61910033666623480}
-  - component: {fileID: 8128370943111612407}
   - component: {fileID: 7649259716619283115}
   m_Layer: 0
   m_Name: PlayerSpikes
@@ -135,22 +134,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &8128370943111612407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 284444854585473113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9b139c29e0d1a429c7059671386182, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerNormal: {fileID: 1064160030246394807, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-  PlayerSpikes: {fileID: 284444854585473113}
-  PlayerBounce: {fileID: 5299558102460970425, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
-  Estate: 2
 --- !u!114 &7649259716619283115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,4 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
+  jumpForce: 0
   moveJoystick: {fileID: 7228755328112209028, guid: 299576d4ae61a364eae04561b0565cad, type: 3}
