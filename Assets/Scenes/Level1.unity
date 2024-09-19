@@ -765,7 +765,7 @@ GameObject:
   - component: {fileID: 492317987}
   - component: {fileID: 492317986}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Respawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -862,6 +862,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 284444854585473113, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
   m_PrefabInstance: {fileID: 1840287961}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &509184712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509184705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86123b03d51468c47900ddf70139b9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 509184705}
+  spawnPoint: {fileID: 492317985}
+  spawnValue: 20
 --- !u!1 &601375456
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,6 +2544,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6158754741598052615, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
+      propertyPath: moveJoystick
+      value: 
+      objectReference: {fileID: 2018453396}
     - target: {fileID: 6469276344568616310, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -2576,7 +2595,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5299558102460970425, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1352827568}
   m_SourcePrefab: {fileID: 100100000, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
 --- !u!1 &1327032256
 GameObject:
@@ -2740,6 +2762,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5299558102460970425, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
   m_PrefabInstance: {fileID: 1315417064}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1352827568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352827561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86123b03d51468c47900ddf70139b9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1352827561}
+  spawnPoint: {fileID: 492317985}
+  spawnValue: 20
 --- !u!1 &1358893901
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,6 +3824,48 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1064160030246394807, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
   m_PrefabInstance: {fileID: 7865950763993333969}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1608420069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608420062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86123b03d51468c47900ddf70139b9b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1608420062}
+  spawnPoint: {fileID: 492317985}
+  spawnValue: 20
+--- !u!54 &1608420070
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608420062}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1638848707
 GameObject:
   m_ObjectHideFlags: 0
@@ -4373,10 +4452,17 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7649259716619283115, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
+      propertyPath: moveJoystick
+      value: 
+      objectReference: {fileID: 2018453396}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 284444854585473113, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 509184712}
   m_SourcePrefab: {fileID: 100100000, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
 --- !u!1 &1866140181
 GameObject:
@@ -5505,7 +5591,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1064160030246394807, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 1608420070}
+    - targetCorrespondingSourceObject: {fileID: 1064160030246394807, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1608420069}
   m_SourcePrefab: {fileID: 100100000, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
 --- !u!1001 &9128285292003740522
 PrefabInstance:
