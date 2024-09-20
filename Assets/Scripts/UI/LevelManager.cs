@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class LevelManager : MonoBehaviour
 {
-
+    /*
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject gameOverUI2;
+    */
 
+    /*
     public void gameOver()
     {
         gameOverUI.SetActive(true);
         gameOverUI2.SetActive(true);
     }
-
-    public void restart()
+    */
+    public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 

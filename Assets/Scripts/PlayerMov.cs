@@ -29,17 +29,24 @@ public class PlayerMov : MonoBehaviour
 
     private void Movement()
     {
+        Vector3 dirX = Vector3.zero;
+        Vector3 dirZ = Vector3.zero;
         Vector3 dir = Vector3.zero;
 
-        dir.x = Input.GetAxis("Horizontal");
-        dir.z = Input.GetAxis("Vertical");
+        //dir.x = Input.GetAxis("Horizontal");
+        dirX = camTransform.right* Input.GetAxis("Horizontal");
 
+
+        //dirZ.z = Input.GetAxis("Vertical");
+        dirZ = camTransform.forward* Input.GetAxis("Vertical");
+        dir = dirX + dirZ;
         if (dir.magnitude > 1)
             dir.Normalize();
 
         if (moveJoystick.InputDirection != Vector3.zero)
         {
-            dir = moveJoystick.InputDirection;
+            dir = camTransform.right * moveJoystick.InputDirection.x + camTransform.forward * moveJoystick.InputDirection.z;
+            //dir = moveJoystick.InputDirection;
         }
 
         controller.AddForce(dir * moveSpeed);

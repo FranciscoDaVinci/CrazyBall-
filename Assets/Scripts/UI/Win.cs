@@ -12,7 +12,7 @@ public class Win : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "PJ")
+        if (other.gameObject.tag == "Player")
         {
             youwinText.SetActive(true);
             Time.timeScale = 0;
