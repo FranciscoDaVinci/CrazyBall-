@@ -3848,7 +3848,7 @@ Rigidbody:
   m_GameObject: {fileID: 1608420062}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -5546,7 +5546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3444121223203539942, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: moveSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3444121223203539942, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: moveJoystick

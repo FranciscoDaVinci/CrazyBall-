@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerMov : MonoBehaviour
@@ -11,12 +12,12 @@ public class PlayerMov : MonoBehaviour
     [SerializeField] VirtualJoystick moveJoystick;
 
     private Rigidbody controller;
-    //private Transform camTransform;
+    public Transform camTransform;
 
     private void Start()
     {
         controller = GetComponent<Rigidbody>();
-        //camTransform = Camera.main.transform;
+        camTransform = Camera.main.transform;
     }
 
 
@@ -44,9 +45,10 @@ public class PlayerMov : MonoBehaviour
         controller.AddForce(dir * moveSpeed);
 
         /*Vector3 rotateDir = camTransform.TransformDirection(dir);
-        rotateDir = new Vector3(rotateDir.x, 0, rotateDir.z);
+        rotateDir = new Vector3(rotateDir.x, camTransform.rotation.y, rotateDir.z);
         rotateDir = rotateDir.normalized * dir.magnitude;
         */
+
     }
 
     void Jump()
