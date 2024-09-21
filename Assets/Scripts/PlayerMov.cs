@@ -12,7 +12,7 @@ public class PlayerMov : MonoBehaviour
     [SerializeField] VirtualJoystick moveJoystick;
 
     private Rigidbody controller;
-    public Transform camTransform;
+    private Transform camTransform;
 
     private void Start()
     {

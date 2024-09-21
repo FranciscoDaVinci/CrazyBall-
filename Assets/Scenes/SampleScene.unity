@@ -896,7 +896,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2012476570}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_TargetAssemblyTypeName: LoadScenes, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
@@ -954,10 +954,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2012476565}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2788423c7f88d4f4b9c40b8813a89b9d, type: 3}
+  m_Script: {fileID: 11500000, guid: a90958c1c5e52f44c8da8795a744a76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenetoload: Level1
+  sceneToLoad: LevelSelector
 --- !u!1 &2074773354
 GameObject:
   m_ObjectHideFlags: 0

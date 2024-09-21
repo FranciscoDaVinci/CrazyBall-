@@ -8,11 +8,7 @@ public class LoadScenes : MonoBehaviour
     public string sceneToLoad;
     public void LoadScene()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(sceneToLoad);
     }
 
-    public void GoMenu()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
 }
