@@ -2,51 +2,65 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStates : MonoBehaviour
+public class PlayerStates : MonoBehaviour, IObserverPlayerState   
 {
-    [SerializeField] int _estate;
+    int _ballPosition;
     [SerializeField] GameObject PlayerNormal;
     [SerializeField] GameObject PlayerSpikes;
     [SerializeField] GameObject PlayerBounce;
-    [SerializeField] Transform ballPosition;
+    [SerializeField] Transform transBallPosition;
+    public IObservablePlayerState _obs;
+
+    public void Awake()
+    {
+        _obs = GetComponent<IObservablePlayerState>();
+        if (_obs != null)
+        {
+            _obs.Suscribe(this);
+            Debug.Log("Se suscribio");
+        }
+    }
 
     private void Start()
     {
-        ballPosition.position = PlayerNormal.transform.position;
+        transBallPosition.position = PlayerNormal.transform.position;
     }
 
     void Update()
     {
         //Mueve el GameObject que tiene el Transofrm a la pelotita que esta prendida  
-        if (_estate == 1)
+        BallPosition();
+
+    }
+
+    void BallPosition()
+    {
+        if (_ballPosition == 0)
         {
-            ballPosition.position = PlayerNormal.transform.position;
+            transBallPosition.position = PlayerNormal.transform.position;
         }
 
-        else if (_estate == 2)
+        else if (_ballPosition == 1)
         {
-            ballPosition.position = PlayerSpikes.transform.position;
+            transBallPosition.position = PlayerSpikes.transform.position;
         }
 
-        else
+        else if (_ballPosition == 2)
         {
-            ballPosition.position = PlayerBounce.transform.position;
+            transBallPosition.position = PlayerBounce.transform.position;
         }
-
     }
 
     public void NormalState()
     {
-        if (_estate != 1)
+        if (_ballPosition != 0)
         {
             PlayerSpikes.SetActive(false);
             PlayerBounce.SetActive(false);
 
             PlayerNormal.SetActive(true);
 
-            PlayerNormal.transform.position = ballPosition.position;
-
-            _estate = 1;
+            PlayerNormal.transform.position = transBallPosition.position;
         }
 
         else
@@ -57,15 +71,14 @@ public class PlayerStates : MonoBehaviour
 
     public void SpikeState()
     {
-        if (_estate != 2)
+        if (_ballPosition != 1)
         {
             PlayerNormal.SetActive(false);
             PlayerBounce.SetActive(false);
 
             PlayerSpikes.SetActive(true);
 
-            PlayerSpikes.transform.position = ballPosition.position;
-            _estate = 2;
+            PlayerSpikes.transform.position = transBallPosition.position;
         }
 
         else
@@ -76,16 +89,14 @@ public class PlayerStates : MonoBehaviour
 
     public void BounceState()
     {
-        if (_estate != 3)
+        if (_ballPosition != 2)
         {
             PlayerNormal.SetActive(false);
             PlayerSpikes.SetActive(false);
 
             PlayerBounce.SetActive(true);
 
-            PlayerBounce.transform.position = ballPosition.position;
-
-            _estate = 3;
+            PlayerBounce.transform.position = transBallPosition.position;
         }
 
         else
@@ -93,4 +104,27 @@ public class PlayerStates : MonoBehaviour
             Debug.Log("Ya esta en esta forma");
         }
     }
+
+    public void ChangeState(int states)
+    {
+        if (states == 0)
+        {
+            NormalState();
+            _ballPosition = states;
+        }
+
+        else if (states == 1)
+        {
+            SpikeState();
+            _ballPosition = states;
+        }
+
+        else if (states == 2)
+        {
+            BounceState();
+            _ballPosition = states;
+        }
+    }
+
+    
 }

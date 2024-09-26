@@ -1,21 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
+//using UnityEngine.Rendering;
+//using static UnityEditor.Timeline.TimelinePlaybackControls;
 
-public class PlayerMov : MonoBehaviour
+public class PlayerMov : MonoBehaviour , IObserverButtons
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
+
     [SerializeField] private float gravityMultipler = 3.0f;
-    //[SerializeField] Buttons Buttons;
     [SerializeField] VirtualJoystick moveJoystick;
-    private float gravity = -9.8f;
+
+    private float _gravity = 9.8f;
     private float velocity;
+
+    IObservableButtons _obsButtons;
 
     private Rigidbody controller;
     private Transform camTransform;
+
+    public void Awake()
+    {
+        _obsButtons = GetComponent<IObservableButtons>();
+        if (_obsButtons != null)
+        {
+            _obsButtons.Suscribe(this);
+        }
+    }
 
     private void Start()
     {
@@ -23,11 +35,9 @@ public class PlayerMov : MonoBehaviour
         camTransform = Camera.main.transform;
     }
 
-
     void Update()
     {
         Movement();
-        Jump();
         Gravity();
     }
 
@@ -38,11 +48,9 @@ public class PlayerMov : MonoBehaviour
         Vector3 dir = Vector3.zero;
 
         //dir.x = Input.GetAxis("Horizontal");
-        dirX = camTransform.right* Input.GetAxis("Horizontal");
-
-
+        dirX = camTransform.right * Input.GetAxis("Horizontal");
         //dirZ.z = Input.GetAxis("Vertical");
-        dirZ = camTransform.forward* Input.GetAxis("Vertical");
+        dirZ = camTransform.forward * Input.GetAxis("Vertical");
         dir = dirX + dirZ;
         if (dir.magnitude > 1)
             dir.Normalize();
@@ -50,7 +58,6 @@ public class PlayerMov : MonoBehaviour
         if (moveJoystick.InputDirection != Vector3.zero)
         {
             dir = camTransform.right * moveJoystick.InputDirection.x + camTransform.forward * moveJoystick.InputDirection.z;
-            //dir = moveJoystick.InputDirection;
         }
 
         controller.AddForce(dir * moveSpeed);
@@ -59,18 +66,24 @@ public class PlayerMov : MonoBehaviour
         rotateDir = new Vector3(rotateDir.x, camTransform.rotation.y, rotateDir.z);
         rotateDir = rotateDir.normalized * dir.magnitude;
         */
-
     }
 
-    void Jump()
+    public void PressButton(string button)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-
-            controller.AddForce(Vector3.up * jumpForce);
+        if (button == "Jump")
+        {
+            Jump();
+        }
     }
 
+    public void Jump()
+    {
+        controller.AddForce(Vector3.up * jumpForce);
+    }
+
+    //No funciona la gravedad
     private void Gravity()
     {
-        velocity += gravity * gravityMultipler * Time.deltaTime;
-    }
+        velocity += _gravity * gravityMultipler * Time.deltaTime;
+    }    
 }
