@@ -8,8 +8,11 @@ public class PlayerMov : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
+    [SerializeField] private float gravityMultipler = 3.0f;
     //[SerializeField] Buttons Buttons;
     [SerializeField] VirtualJoystick moveJoystick;
+    private float gravity = -9.8f;
+    private float velocity;
 
     private Rigidbody controller;
     private Transform camTransform;
@@ -25,6 +28,7 @@ public class PlayerMov : MonoBehaviour
     {
         Movement();
         Jump();
+        Gravity();
     }
 
     private void Movement()
@@ -65,4 +69,8 @@ public class PlayerMov : MonoBehaviour
             controller.AddForce(Vector3.up * jumpForce);
     }
 
+    private void Gravity()
+    {
+        velocity += gravity * gravityMultipler * Time.deltaTime;
+    }
 }
