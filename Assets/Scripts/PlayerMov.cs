@@ -9,10 +9,10 @@ public class PlayerMov : MonoBehaviour , IObserverButtons
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
 
-    [SerializeField] private float gravityMultipler = 3.0f;
+    //[SerializeField] private float gravityMultipler = 3.0f;
     [SerializeField] VirtualJoystick moveJoystick;
 
-    private float _gravity = 9.8f;
+    public float gravity = 9.8f;
     private float velocity;
 
     IObservableButtons _obsButtons;
@@ -84,6 +84,8 @@ public class PlayerMov : MonoBehaviour , IObserverButtons
     //No funciona la gravedad
     private void Gravity()
     {
-        velocity += _gravity * gravityMultipler * Time.deltaTime;
-    }    
+        controller.AddForce(Vector3.down * gravity);
+
+        //velocity += _gravity * gravityMultipler * Time.deltaTime;
+    }
 }

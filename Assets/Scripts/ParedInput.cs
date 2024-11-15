@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ParedInput : MonoBehaviour
 {
-    public bool ballSpike;
+    public bool ballSpike = false;
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.transform.name != "SpikeState")
