@@ -17,7 +17,7 @@ public class PlayerStates : MonoBehaviour, IObserverPlayerState
         if (_obs != null)
         {
             _obs.Suscribe(this);
-            Debug.Log("Se suscribio");
+            //Debug.Log("Se suscribio");
         }
     }
 
