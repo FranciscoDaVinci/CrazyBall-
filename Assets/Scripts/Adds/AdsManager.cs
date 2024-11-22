@@ -9,9 +9,9 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
     //[SerializeField] string gameIdIOS = "5735184";
 
     public static string GameIdAndroid { get { return instance.gameIdAndroid; } }
-    public static string interstitialAndroid { get { return "Interstitial_Android"; } }
+    //public static string interstitialAndroid { get { return "Interstitial_Android"; } }
     public static string rewardedAndroid { get { return "Rewarded_Android"; } }
-    public static string bannerAndroid { get { return "Banner_Android"; } }
+    //public static string bannerAndroid { get { return "Banner_Android"; } }
 
     public bool onTesting = true;
 
@@ -42,21 +42,21 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
 
     public void ButtonRewarded()
     {
-        Debug.Log("El boton si funciona");
+        //Debug.Log("El boton si funciona");
         rewarded.ShowRewarded();
         
     }
 
-    public static void Log(string _msg, string _color = "white")
+    /*public static void Log(string _msg, string _color = "white")
     {
         instance.console.text += "\n<color=" + _color + ">" + _msg + "</color>";
-    }
+    }*/
 
     void IUnityAdsInitializationListener.OnInitializationComplete()
     {
-        Log("Inicializo las Adds","green");
-
+        //Log("Inicializo las Adds","green");
         rewarded.StartLoadRewarded();
+        Debug.Log("Se inicializaron las Ads");
     }
 
     void IUnityAdsInitializationListener.OnInitializationFailed(UnityAdsInitializationError error, string message)

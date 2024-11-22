@@ -37,13 +37,13 @@ public class AddsRewarded : MonoBehaviour,IUnityAdsLoadListener, IUnityAdsShowLi
         switch (showCompletionState)
         {
             case UnityAdsShowCompletionState.SKIPPED:
-                AdsManager.Log("REWARDED: SKIPPED");
+                Debug.Log("Recompensa Skpieada");
                 break;
             case UnityAdsShowCompletionState.COMPLETED:
-                AdsManager.Log("REWARDED: COMPLETED");
+                Debug.Log("Recompensa Completada");
                 break;
             case UnityAdsShowCompletionState.UNKNOWN:
-                AdsManager.Log("REWARDED: UNKNOWN");
+                Debug.Log("Recompensa Error");
                 break;
         }
     }

@@ -10,7 +10,7 @@ public class SaveText : BaseSave
     private void Start()
     {
         path = Path.Combine(Application.persistentDataPath, "SaveText.txt");
-        //Debug.Log(path);
+        Debug.Log(path);
     }
 
     public override SaveData OnLoad()
@@ -43,7 +43,7 @@ public class SaveText : BaseSave
         Debug.Log(tosave);
 
         using (FileStream stream = new FileStream(path, FileMode.Create, FileAccess.Write))
-        using (StreamWriter writer = new StreamWriter(stream)) // lo escribo
+        using (StreamWriter writer = new StreamWriter(stream))
         {
             writer.Write(tosave);
         }

@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
 
     public void Menu()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
 
@@ -22,7 +22,6 @@ public class LevelManager : MonoBehaviour
         gameObject.SetActive(false);
         Time.timeScale = 1;
     }
-
     public void Pause(GameObject gameObject)
     {
         gameObject.SetActive(true);
@@ -34,5 +33,4 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Cerrando");
         Application.Quit();
     }
-
 }
