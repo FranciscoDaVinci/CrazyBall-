@@ -1,22 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    /*
-    [SerializeField] GameObject gameOverUI;
-    [SerializeField] GameObject gameOverUI2;
-    */
 
-    /*
-    public void gameOver()
-    {
-        gameOverUI.SetActive(true);
-        gameOverUI2.SetActive(true);
-    }
-    */
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -41,4 +28,11 @@ public class LevelManager : MonoBehaviour
         gameObject.SetActive(true);
         Time.timeScale = 0;
     }
+
+    public void ExitG()
+    {
+        Debug.Log("Cerrando");
+        Application.Quit();
+    }
+
 }
