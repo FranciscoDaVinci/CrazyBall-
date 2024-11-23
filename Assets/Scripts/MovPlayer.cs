@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-//using UnityEngine.Rendering;
-//using static UnityEditor.Timeline.TimelinePlaybackControls;
 
-public class PlayerMov : MonoBehaviour , IObserverButtons
+public class MovPlayer : MonoBehaviour, IObserverButtons
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
@@ -84,11 +83,10 @@ public class PlayerMov : MonoBehaviour , IObserverButtons
     //No funciona la gravedad
     private void Gravity()
     {
-       controller.AddForce(Vector3.down* gravity);
-    }
-    
-
-        //velocity += _gravity * gravityMultipler * Time.deltaTime;
+        controller.AddForce(Vector3.down * gravity);
     }
 
+
+    //velocity += _gravity * gravityMultipler * Time.deltaTime;
+}
 
