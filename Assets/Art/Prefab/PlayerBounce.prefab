@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8971661776026533037}
   - component: {fileID: 1339545550704931849}
   - component: {fileID: 6469276344568616310}
-  - component: {fileID: 6158754741598052615}
   m_Layer: 0
   m_Name: PlayerBounce
   m_TagString: Untagged
@@ -134,18 +133,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6158754741598052615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5299558102460970425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad13ee4623764504290d5b2e88215bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  jumpForce: 0
-  moveJoystick: {fileID: 7228755328112209028, guid: 299576d4ae61a364eae04561b0565cad, type: 3}

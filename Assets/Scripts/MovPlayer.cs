@@ -80,7 +80,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         controller.AddForce(Vector3.up * jumpForce);
     }
 
-    //No funciona la gravedad
+    //Ya funciona la gravedad
     private void Gravity()
     {
         controller.AddForce(Vector3.down * gravity);
