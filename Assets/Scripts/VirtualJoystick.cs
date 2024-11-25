@@ -27,8 +27,8 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
             ped.pressEventCamera,
             out pos))
         {
-            pos.x = (pos.x / backGround.rectTransform.sizeDelta.x);
-            pos.y = (pos.y / backGround.rectTransform.sizeDelta.y);
+            pos.x = (pos.x / backGround.rectTransform.sizeDelta.x); // backGround.rectTransform.sizeDelta.x ... es cero (no se puede dividir por 0 ERROR)
+            pos.y = (pos.y / backGround.rectTransform.sizeDelta.y); // backGround.rectTransform.sizeDelta.y ... es cero (no se puede dividir por 0 ERROR)
 
             float x = (backGround.rectTransform.pivot.x == 1) ? pos.x * 2 + 1 : pos.x * 2 - 1;
             float y = (backGround.rectTransform.pivot.y == 1) ? pos.y * 2 + 1 : pos.y * 2 - 1;

@@ -53,12 +53,10 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         dir = dirX + dirZ;
         if (dir.magnitude > 1)
             dir.Normalize();
-
         if (moveJoystick.InputDirection != Vector3.zero)
         {
             dir = camTransform.right * moveJoystick.InputDirection.x + camTransform.forward * moveJoystick.InputDirection.z;
         }
-
         controller.AddForce(dir * moveSpeed);
 
         /*Vector3 rotateDir = camTransform.TransformDirection(dir);
