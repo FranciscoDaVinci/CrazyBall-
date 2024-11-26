@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Win
+  - Floor
+  - Smash
   layers:
   - Default
   - TransparentFX

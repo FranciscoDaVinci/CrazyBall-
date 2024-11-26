@@ -12,12 +12,15 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     [SerializeField] VirtualJoystick moveJoystick;
 
     public float gravity = 9.8f;
-    private float velocity;
+    //private float velocity;
+    public AudioSource audioBall;
+    public bool touchSuelo;
 
     IObservableButtons _obsButtons;
 
     private Rigidbody controller;
     private Transform camTransform;
+    Vector3 checkPoint;
 
     public void Awake()
     {
@@ -26,6 +29,9 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         {
             _obsButtons.Suscribe(this);
         }
+
+        checkPoint = transform.position;
+
     }
 
     private void Start()
@@ -58,7 +64,14 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
             dir = camTransform.right * moveJoystick.InputDirection.x + camTransform.forward * moveJoystick.InputDirection.z;
         }
         controller.AddForce(dir * moveSpeed);
-
+        if(controller.velocity.magnitude > 0.1f && touchSuelo)
+        {
+            audioBall.enabled = true;
+        }
+        else
+        {
+            audioBall.enabled = false;
+        }
         /*Vector3 rotateDir = camTransform.TransformDirection(dir);
         rotateDir = new Vector3(rotateDir.x, camTransform.rotation.y, rotateDir.z);
         rotateDir = rotateDir.normalized * dir.magnitude;
@@ -84,6 +97,36 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         controller.AddForce(Vector3.down * gravity);
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Floor")
+        touchSuelo = true;
+        if(other.tag == "Smash")
+        {
+            transform.localScale = new Vector3(1, 0.5f, 1);
+            controller.isKinematic = true;
+        }
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Floor")
+            touchSuelo = true;
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Floor")
+            touchSuelo = false;
+
+    }
+
+    IEnumerator restorePos ()
+    {
+        this.enabled = false;
+
+        yield return new WaitForSeconds(2f);
+    }
 
     //velocity += _gravity * gravityMultipler * Time.deltaTime;
 }
