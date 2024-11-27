@@ -22,6 +22,8 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     private Transform camTransform;
     Vector3 checkPoint;
 
+    public Transform smashPos1;
+
     public void Awake()
     {
         _obsButtons = GetComponent<IObservableButtons>();
@@ -103,8 +105,12 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         touchSuelo = true;
         if(other.tag == "Smash")
         {
-            transform.localScale = new Vector3(1, 0.5f, 1);
+            transform.position = smashPos1.position;
+            transform.rotation = smashPos1.rotation;
+            transform.localScale = smashPos1.localScale;
             controller.isKinematic = true;
+            audioBall.enabled = false;
+            StartCoroutine(restorePos());
         }
     }
 
@@ -126,6 +132,12 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         this.enabled = false;
 
         yield return new WaitForSeconds(2f);
+        transform.position = checkPoint;
+        transform.localScale = new Vector3(1, 1, 1);
+        
+
+        this.enabled = true;
+        controller.isKinematic = false;
     }
 
     //velocity += _gravity * gravityMultipler * Time.deltaTime;
