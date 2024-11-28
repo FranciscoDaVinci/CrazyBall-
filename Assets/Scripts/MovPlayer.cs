@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
 public class MovPlayer : MonoBehaviour, IObserverButtons
 {
     [SerializeField] float moveSpeed;
@@ -10,6 +11,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
 
     //[SerializeField] private float gravityMultipler = 3.0f;
     [SerializeField] VirtualJoystick moveJoystick;
+    public GameObject youwinText;
 
     public float gravity = 9.8f;
     //private float velocity;
@@ -40,6 +42,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     {
         controller = GetComponent<Rigidbody>();
         camTransform = Camera.main.transform;
+        youwinText.SetActive(false);
     }
 
     void Update()
@@ -111,6 +114,11 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
             controller.isKinematic = true;
             audioBall.enabled = false;
             StartCoroutine(restorePos());
+        } 
+        if (other.gameObject.tag == "Win")
+        {
+            youwinText.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
