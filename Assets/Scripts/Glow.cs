@@ -8,7 +8,7 @@ public class Glow : MonoBehaviour
     public Slider slider;
     public float sliderValue;
     public Image glow;
-    // Start is called before the first frame update
+
     void Start()
     {
         slider.value = PlayerPrefs.GetFloat("glow", 0.5f);
@@ -22,7 +22,5 @@ public class Glow : MonoBehaviour
         sliderValue = valor;
         PlayerPrefs.SetFloat("glow", sliderValue);
         glow.color = new Color(glow.color.r, glow.color.g, glow.color.b, slider.value);
-
     }
-
 }
