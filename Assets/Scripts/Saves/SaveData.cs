@@ -4,18 +4,42 @@ using UnityEngine;
 
 public class SaveData
 {
-    [SerializeField] private string name = "default";
+    /*[SerializeField] private string name = "default";
     [SerializeField] private int level = 1;
     [SerializeField] private int currency = 0;
-
-
-    public string Name
+    */
+    public int SelectSkinBasic
     {
-        get { return name; }
-        set { name = value; }
+        get { return MaterialManager.SelectSkinsN; }
+        set
+        {
+            MaterialManager.SelectSkinsN = value;
+            //Debug.Log(value);
+        }
     }
 
-    public int Level
+    public int SelectSkinSpike
+    {
+        get { return MaterialManager.SelectSkinsS; }
+        set
+        {
+            MaterialManager.SelectSkinsS = value;
+            //Debug.Log(value);
+        }
+    }
+
+    public int SelectSkinBounce
+    {
+        get { return MaterialManager.SelectSkinsB; }
+        set
+        {
+            MaterialManager.SelectSkinsB = value;
+            //Debug.Log(value);
+        }
+    }
+
+
+    /*public int Level
     {
         get { return level; }
         set { level = value; }
@@ -31,5 +55,5 @@ public class SaveData
         name = "default";
         level = 0;
         currency = 0;
-    }
+    }*/
 }

@@ -5,27 +5,26 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     SaveData saveData;
-
-    [SerializeField] SaveText saveText;
-    //[SerializeField] SaveByPlayerPrefs save_byPrefs;
+    //[SerializeField] SaveText saveText;
+    [SerializeField] SavePPrefs savePPrefs;
     //[SerializeField] SaveByJSON save_byJSON;
-
 
     void Start()
     {
         saveData = new SaveData();
 
-        saveData.Name = "default";
-        saveData.Level = 0;
-        saveData.Currency = 0;
+        /*saveData.SelectSkinBasic = 0;
+        saveData.SelectSkinSpike = 0;
+        saveData.SelectSkinBounce = 0;
+        */
     }
 
-    public void ButtonTxtSave()
+    public void ButtonPlayerPrefSave()
     {
-        saveText.Save(saveData);
+        savePPrefs.Save(saveData);
     }
-    public void ButtonTxtLoad()
+    public void ButtonPlayerPrefLoad()
     {
-        saveData = saveText.Load();
+        saveData = savePPrefs.Load();
     }
 }
