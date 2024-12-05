@@ -4,7 +4,7 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
 {
-    [SerializeField] TextMeshProUGUI console;
+    //[SerializeField] TextMeshProUGUI console;
     [SerializeField] string gameIdAndroid = "5735185";
     //[SerializeField] string gameIdIOS = "5735184";
 
@@ -47,20 +47,13 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener
         
     }
 
-    /*public static void Log(string _msg, string _color = "white")
-    {
-        instance.console.text += "\n<color=" + _color + ">" + _msg + "</color>";
-    }*/
-
     void IUnityAdsInitializationListener.OnInitializationComplete()
     {
-        //Log("Inicializo las Adds","green");
         rewarded.StartLoadRewarded();
         Debug.Log("Se inicializaron las Ads");
     }
 
     void IUnityAdsInitializationListener.OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
-        //Log("Fallo al inicializar las Adds","red");
     }
 }

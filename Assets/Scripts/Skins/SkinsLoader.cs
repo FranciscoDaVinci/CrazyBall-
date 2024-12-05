@@ -11,7 +11,7 @@ public class SkinsLoader : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("La pelota normal cargada es la numero" + matManager.BallsTypes[0]);
+        Debug.Log("La pelota normal cargada es la numero " + matManager.BallsTypes[0]);
 
         for (int i=0; i < Players.Length; i++)
         {

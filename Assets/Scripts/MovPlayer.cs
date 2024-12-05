@@ -9,22 +9,24 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
 
-    //[SerializeField] private float gravityMultipler = 3.0f;
     [SerializeField] VirtualJoystick moveJoystick;
-    public GameObject youwinText;
+    //public GameObject youwinText;
 
-    public float gravity = 9.8f;
+    public float gravity;
     //private float velocity;
     public AudioSource audioBall;
-    public bool touchSuelo;
+    //public bool touchSuelo;
 
     IObservableButtons _obsButtons;
 
-    private Rigidbody controller;
+    [SerializeField] Rigidbody controller;
     private Transform camTransform;
-    Vector3 checkPoint;
+    //Vector3 checkPoint;
 
-    public Transform smashPos1;
+    //public Transform smashPos1;
+
+    private Ray _jumpRay;
+    private float _jumpRayDis = 1.25f;
 
     public void Awake()
     {
@@ -34,7 +36,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
             _obsButtons.Suscribe(this);
         }
 
-        checkPoint = transform.position;
+        //checkPoint = transform.position;
 
     }
 
@@ -42,7 +44,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     {
         controller = GetComponent<Rigidbody>();
         camTransform = Camera.main.transform;
-        youwinText.SetActive(false);
+        //youwinText.SetActive(false);
     }
 
     void Update()
@@ -69,7 +71,9 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
             dir = camTransform.right * moveJoystick.InputDirection.x + camTransform.forward * moveJoystick.InputDirection.z;
         }
         controller.AddForce(dir * moveSpeed);
-        if(controller.velocity.magnitude > 0.1f && touchSuelo)
+
+        //Sonido
+        if (controller.velocity.magnitude > 0.1f && CanJump())
         {
             audioBall.enabled = true;
         }
@@ -77,6 +81,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         {
             audioBall.enabled = false;
         }
+
         /*Vector3 rotateDir = camTransform.TransformDirection(dir);
         rotateDir = new Vector3(rotateDir.x, camTransform.rotation.y, rotateDir.z);
         rotateDir = rotateDir.normalized * dir.magnitude;
@@ -87,55 +92,64 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     {
         if (button == "Jump")
         {
+            Debug.Log("Deberia estar saltando");                                                          
             Jump();
         }
     }
 
     public void Jump()
     {
-        controller.AddForce(Vector3.up * jumpForce);
+        if (CanJump())
+        {
+            controller.AddForce(Vector3.up * jumpForce);
+            Debug.Log("Deberia estar saltando x2");
+        }
     }
 
-    //Ya funciona la gravedad
+    public bool CanJump()
+    {
+        _jumpRay = new Ray(new Vector3(transform.position.x, transform.position.y, transform.position.z), Vector3.down);
+        return Physics.Raycast(_jumpRay, _jumpRayDis);
+    }
+
     private void Gravity()
     {
         controller.AddForce(Vector3.down * gravity);
     }
 
-    public void OnTriggerEnter(Collider other)
+
+    public void OnCollisionEnter(Collision other)
     {
-        if(other.tag == "Floor")
-        touchSuelo = true;
-        if(other.tag == "Smash")
+        /*if (other.gameObject.tag == "Smash")
         {
             transform.position = smashPos1.position;
             transform.rotation = smashPos1.rotation;
             transform.localScale = smashPos1.localScale;
-            controller.isKinematic = true;
+            //controller.isKinematic = true;
             audioBall.enabled = false;
-            StartCoroutine(restorePos());
-        } 
+            //StartCoroutine(restorePos());
+        }
         if (other.gameObject.tag == "Win")
         {
             youwinText.SetActive(true);
             Time.timeScale = 0;
-        }
+        }*/
     }
 
-    public void OnTriggerStay(Collider other)
+    /*public void OnTriggerStay(Collider other)
     {
         if (other.tag == "Floor")
             touchSuelo = true;
-    }
+    }*/
 
-    public void OnTriggerExit(Collider other)
+    /*public void OnTriggerExit(Collider other)
     {
         if (other.tag == "Floor")
             touchSuelo = false;
 
-    }
+    }*/
 
-    IEnumerator restorePos ()
+    /*IEnumerator restorePos ()
     {
         this.enabled = false;
 
@@ -147,7 +161,6 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         this.enabled = true;
         controller.isKinematic = false;
     }
-
-    //velocity += _gravity * gravityMultipler * Time.deltaTime;
+    */
 }
 

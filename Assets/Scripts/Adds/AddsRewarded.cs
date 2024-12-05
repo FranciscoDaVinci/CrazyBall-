@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class AddsRewarded : MonoBehaviour,IUnityAdsLoadListener, IUnityAdsShowListener
+public class AddsRewarded : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
 {
+    public static int Money;
+    [SerializeField] int RewardType;
+
     public void StartLoadRewarded()
     {
         Advertisement.Load(AdsManager.rewardedAndroid, this);
@@ -17,19 +20,19 @@ public class AddsRewarded : MonoBehaviour,IUnityAdsLoadListener, IUnityAdsShowLi
 
     void IUnityAdsLoadListener.OnUnityAdsAdLoaded(string placementId)
     {
-        
+
     }
 
     void IUnityAdsLoadListener.OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
     {
-        
+
     }
-    
+
 
 
     void IUnityAdsShowListener.OnUnityAdsShowClick(string placementId)
     {
-        
+
     }
 
     void IUnityAdsShowListener.OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
@@ -40,7 +43,16 @@ public class AddsRewarded : MonoBehaviour,IUnityAdsLoadListener, IUnityAdsShowLi
                 Debug.Log("Recompensa Skpieada");
                 break;
             case UnityAdsShowCompletionState.COMPLETED:
-                Debug.Log("Recompensa Completada");
+                if (RewardType == 1)
+                {
+                    Money++;
+                    Debug.Log("Recompensa Completada");
+                }
+                else if (RewardType == 2)
+                {
+                    LifePlayer.Lifes +=5;
+                    Debug.Log("Recompensa Completada");
+                }
                 break;
             case UnityAdsShowCompletionState.UNKNOWN:
                 Debug.Log("Recompensa Error");
@@ -50,11 +62,12 @@ public class AddsRewarded : MonoBehaviour,IUnityAdsLoadListener, IUnityAdsShowLi
 
     void IUnityAdsShowListener.OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
     {
-        
+
     }
 
     void IUnityAdsShowListener.OnUnityAdsShowStart(string placementId)
     {
-        
+
     }
+
 }

@@ -6,7 +6,6 @@ public class MaterialManager : MonoBehaviour
     public static int SelectSkinsS;
     public static int SelectSkinsB;
 
-    //public int Valores;
     public Material[] SkinsNormalBalls;
     public Material[] SkinsSpikeBall;
     public Material[] SkinsBounceBall;
@@ -22,8 +21,8 @@ public class MaterialManager : MonoBehaviour
 
     public void SkinSelectorNormal(int SelectSkinNormal)
     {
-        SelectSkinsN = SelectSkinNormal;
         BallsTypes[0] = SkinsNormalBalls[SelectSkinsN];
+        SelectSkinsN = SelectSkinNormal;        
         Debug.Log("La Skin seleccionada para la pelota Normal es es la numero " + SelectSkinsN);
     }
 
@@ -41,12 +40,4 @@ public class MaterialManager : MonoBehaviour
         Debug.Log("La Skin seleccionada para la pelota Bounce es es la numero " + SelectSkinsB);
     }
 
-
-
-    /*public void LoadSkins()
-    {
-        Renderer render = Player.GetComponent<Renderer>();
-        render.material = Skins[SelectSkins];
-        Debug.Log(Skins[SelectSkins]);
-    }*/
 }

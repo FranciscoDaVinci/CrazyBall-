@@ -1,20 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SaveData
 {
-    /*[SerializeField] private string name = "default";
-    [SerializeField] private int level = 1;
-    [SerializeField] private int currency = 0;
-    */
+
     public int SelectSkinBasic
     {
         get { return MaterialManager.SelectSkinsN; }
         set
         {
             MaterialManager.SelectSkinsN = value;
-            //Debug.Log(value);
         }
     }
 
@@ -24,7 +18,6 @@ public class SaveData
         set
         {
             MaterialManager.SelectSkinsS = value;
-            //Debug.Log(value);
         }
     }
 
@@ -38,19 +31,43 @@ public class SaveData
         }
     }
 
-
-    /*public int Level
+    public int AdsViews
     {
-        get { return level; }
-        set { level = value; }
-    }
-    public int Currency
-    {
-        get { return currency; }
-        set { currency = value; }
+        get { return ValueSkins.buyed; }
+        set
+        {
+            ValueSkins.buyed = value;
+        }
     }
 
-    public SaveData()
+    public int Money
+    {
+        get { return AddsRewarded.Money; }
+        set
+        {
+            AddsRewarded.Money = value;
+        }
+    }
+
+    public int Lifes
+    {
+        get { return LifePlayer.Lifes; }
+        set
+        {
+            LifePlayer.Lifes = value;
+        }
+    }
+
+    public string TimetoAddLife
+    {
+        get { return LifePlayer.next.ToString(); }
+        set
+        {
+        }
+    }
+
+
+    /*public SaveData()
     {
         name = "default";
         level = 0;

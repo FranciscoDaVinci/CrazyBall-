@@ -5,9 +5,7 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     SaveData saveData;
-    //[SerializeField] SaveText saveText;
     [SerializeField] SavePPrefs savePPrefs;
-    //[SerializeField] SaveByJSON save_byJSON;
 
     void Start()
     {
@@ -16,7 +14,7 @@ public class SaveManager : MonoBehaviour
         /*saveData.SelectSkinBasic = 0;
         saveData.SelectSkinSpike = 0;
         saveData.SelectSkinBounce = 0;
-        */
+        saveData.AddsViews = 1;*/
     }
 
     public void ButtonPlayerPrefSave()
