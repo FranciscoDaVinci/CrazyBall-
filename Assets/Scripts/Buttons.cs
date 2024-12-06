@@ -7,36 +7,12 @@ public class Buttons : MonoBehaviour, IObservablePlayerState, IObservableButtons
     List<IObserverButtons> _obsButtons = new();
     [SerializeField] int _states;
 
-    public void NormalState()
+    public void ChangeState(int state)
     {
-        _states = 0;
+        _states = state;
 
         foreach (var observer in _obsPlayerState)
         {
-            Debug.Log("Entra");
-            observer.ChangeState(_states);
-        }
-    }
-
-    public void SpikeState()
-    {
-        
-        _states = 1;
-
-        foreach (var observer in _obsPlayerState)
-        {
-            Debug.Log("Entra");
-            observer.ChangeState(_states);
-        }
-    }
-
-    public void BounceState()
-    {
-        _states = 2;
-
-        foreach (var observer in _obsPlayerState)
-        {
-            Debug.Log("Entra");
             observer.ChangeState(_states);
         }
     }

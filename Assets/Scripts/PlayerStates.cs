@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStates : MonoBehaviour, IObserverPlayerState   
+public class PlayerStates : MonoBehaviour, IObserverPlayerState
 {
     int _ballPosition;
-    [SerializeField] GameObject PlayerNormal;
-    [SerializeField] GameObject PlayerSpikes;
-    [SerializeField] GameObject PlayerBounce;
+    [SerializeField] GameObject[] balls;
     [SerializeField] Transform transBallPosition;
     public IObservablePlayerState _obs;
 
@@ -23,108 +21,55 @@ public class PlayerStates : MonoBehaviour, IObserverPlayerState
 
     private void Start()
     {
-        transBallPosition.position = PlayerNormal.transform.position;
+        transBallPosition.position = balls[0].transform.position;
     }
 
     void Update()
     {
-        //Mueve el GameObject que tiene el Transofrm a la pelotita que esta prendida  
+        //Mueve el GameObject que tiene el Transofrm a la pelotita que esta prendida
+        //No se puede sacar del Update porque la camara sigue el "transBallPosition" para evitar saltos de camara.
         BallPosition();
-
     }
 
     void BallPosition()
     {
-        if (_ballPosition == 0)
-        {
-            transBallPosition.position = PlayerNormal.transform.position;
-        }
 
-        else if (_ballPosition == 1)
+        for (int i = 0; i < balls.Length; i++)
         {
-            transBallPosition.position = PlayerSpikes.transform.position;
-        }
-
-        else if (_ballPosition == 2)
-        {
-            transBallPosition.position = PlayerBounce.transform.position;
+            if (_ballPosition == i)
+            {
+                transBallPosition.position = balls[i].transform.position;
+            }
         }
     }
 
-    public void NormalState()
+    public void States()
     {
-        if (_ballPosition != 0)
+        for (int i = 0; i < balls.Length; i++)
         {
-            PlayerSpikes.SetActive(false);
-            PlayerBounce.SetActive(false);
-
-            PlayerNormal.SetActive(true);
-
-            PlayerNormal.transform.position = transBallPosition.position;
+            if (i == _ballPosition)
+            {
+                balls[i].SetActive(true);
+                balls[i].transform.position = transBallPosition.position;
+            }
+            else
+            {
+                balls[i].SetActive(false);
+            }
         }
 
-        else
-        {
-            Debug.Log("Ya esta en esta forma");
-        }
-    }
-
-    public void SpikeState()
-    {
-        if (_ballPosition != 1)
-        {
-            PlayerNormal.SetActive(false);
-            PlayerBounce.SetActive(false);
-
-            PlayerSpikes.SetActive(true);
-
-            PlayerSpikes.transform.position = transBallPosition.position;
-        }
-
-        else
-        {
-            Debug.Log("Ya esta en esta forma");
-        }
-    }
-
-    public void BounceState()
-    {
-        if (_ballPosition != 2)
-        {
-            PlayerNormal.SetActive(false);
-            PlayerSpikes.SetActive(false);
-
-            PlayerBounce.SetActive(true);
-
-            PlayerBounce.transform.position = transBallPosition.position;
-        }
-
-        else
-        {
-            Debug.Log("Ya esta en esta forma");
-        }
     }
 
     public void ChangeState(int states)
     {
-        if (states == 0)
+        for (int i = 0; i < balls.Length; i++)
         {
-            NormalState();
-            _ballPosition = states;
-        }
-
-        else if (states == 1)
-        {
-            SpikeState();
-            _ballPosition = states;
-        }
-
-        else if (states == 2)
-        {
-            BounceState();
-            _ballPosition = states;
+            if (states == i)
+            {
+                _ballPosition = i;                
+                Debug.Log(_ballPosition + " Posicion de la bola");
+                States();
+            }
         }
     }
-
-    
 }

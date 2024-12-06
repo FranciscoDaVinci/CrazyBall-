@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ParedInput2 : MonoBehaviour
 {
-    public bool ballBounce = false;
+    //public bool ballBounce = false;
+    public Controller controller;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.transform.name != "PlayerBounce")
         {
-            ballBounce = true;
+            //ballBounce = true;
+            controller.WallOn2();
         }
         else
         {
-            ballBounce = false;
+            controller.WallOff2();
+            //ballBounce = false;
         }
     }
     public void OnTriggerExit(Collider other)
     {
-        ballBounce = false;
-
+        controller.WallOff2();
+        //ballBounce = false;
     }
 }

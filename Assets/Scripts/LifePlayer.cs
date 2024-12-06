@@ -13,8 +13,6 @@ public class LifePlayer : MonoBehaviour
     public static DateTime next;
     public TextValuesIU txtValue;
     Coroutine corrutine;
-
-
     //[SerializeField] GameObject noHearts;
 
     public void Start()

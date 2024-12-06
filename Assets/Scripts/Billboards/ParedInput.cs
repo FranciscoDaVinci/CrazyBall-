@@ -1,25 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ParedInput : MonoBehaviour
 {
-    public bool ballSpike = false;
+    //public bool ballSpike = false;
+    public Controller controller;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.transform.name != "SpikeState")
         {
-            ballSpike = true;
+            controller.WallOn1();
+            //ballSpike = true;
         }
         else
         {
-            ballSpike = false;
+            controller.WallOff1();
+            //ballSpike = false;
         }
     }
     public void OnTriggerExit(Collider other)
     {
-            ballSpike = false;
-        
+        controller.WallOff1();
+        //ballSpike = false;        
     }
 }

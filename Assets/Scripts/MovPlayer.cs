@@ -10,23 +10,18 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     [SerializeField] float jumpForce;
 
     [SerializeField] VirtualJoystick moveJoystick;
-    //public GameObject youwinText;
 
     public float gravity;
-    //private float velocity;
     public AudioSource audioBall;
-    //public bool touchSuelo;
 
-    IObservableButtons _obsButtons;
 
     [SerializeField] Rigidbody controller;
     private Transform camTransform;
     //Vector3 checkPoint;
-
-    //public Transform smashPos1;
-
     private Ray _jumpRay;
     private float _jumpRayDis = 1.25f;
+
+    IObservableButtons _obsButtons;
 
     public void Awake()
     {
@@ -35,9 +30,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         {
             _obsButtons.Suscribe(this);
         }
-
         //checkPoint = transform.position;
-
     }
 
     private void Start()
@@ -81,18 +74,13 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         {
             audioBall.enabled = false;
         }
-
-        /*Vector3 rotateDir = camTransform.TransformDirection(dir);
-        rotateDir = new Vector3(rotateDir.x, camTransform.rotation.y, rotateDir.z);
-        rotateDir = rotateDir.normalized * dir.magnitude;
-        */
     }
 
     public void PressButton(string button)
     {
         if (button == "Jump")
         {
-            Debug.Log("Deberia estar saltando");                                                          
+            Debug.Log("Deberia estar saltando");
             Jump();
         }
     }
@@ -116,51 +104,5 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     {
         controller.AddForce(Vector3.down * gravity);
     }
-
-
-    public void OnCollisionEnter(Collision other)
-    {
-        /*if (other.gameObject.tag == "Smash")
-        {
-            transform.position = smashPos1.position;
-            transform.rotation = smashPos1.rotation;
-            transform.localScale = smashPos1.localScale;
-            //controller.isKinematic = true;
-            audioBall.enabled = false;
-            //StartCoroutine(restorePos());
-        }
-        if (other.gameObject.tag == "Win")
-        {
-            youwinText.SetActive(true);
-            Time.timeScale = 0;
-        }*/
-    }
-
-    /*public void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Floor")
-            touchSuelo = true;
-    }*/
-
-    /*public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Floor")
-            touchSuelo = false;
-
-    }*/
-
-    /*IEnumerator restorePos ()
-    {
-        this.enabled = false;
-
-        yield return new WaitForSeconds(2f);
-        transform.position = checkPoint;
-        transform.localScale = new Vector3(1, 1, 1);
-        
-
-        this.enabled = true;
-        controller.isKinematic = false;
-    }
-    */
 }
 
