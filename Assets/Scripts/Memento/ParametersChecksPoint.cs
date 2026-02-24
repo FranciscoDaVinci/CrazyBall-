@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class ParametersChecksPoint : MonoBehaviour
 {
-    public object[] checkPointParameters;
+    public Vector3 scale;
+    public float radius;
+    public Vector3 position;
 
-    public ParametersChecksPoint(params object[] cp)
+    public ParametersChecksPoint(Vector3 scale, float radius, Vector3 position)
     {
-        checkPointParameters = cp; 
+        this.scale = scale;
+        this.radius = radius;
+        this.position = position;
     }
 }

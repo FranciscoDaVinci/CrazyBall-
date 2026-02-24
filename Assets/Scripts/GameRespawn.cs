@@ -59,9 +59,9 @@ public class GameRespawn : SaveCheckPoints
         while (_checkPoints.HaveReferences())
         {
             var data = _checkPoints.GoBack();
-            player.transform.localScale = (Vector3)data.checkPointParameters[0];
-            playerbox.radius = (float)data.checkPointParameters[1];
-            player.transform.position = (Vector3)data.checkPointParameters[2];
+            player.transform.localScale = data.scale;
+            playerbox.radius = data.radius;
+            player.transform.position = data.position;
             Debug.Log("Carga los parametros");
         }
         yield return new WaitForSeconds(0.01f);

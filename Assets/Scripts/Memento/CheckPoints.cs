@@ -6,9 +6,9 @@ public class CheckPoints : MonoBehaviour
 {
     List<ParametersChecksPoint> _checkPoints = new List<ParametersChecksPoint>();
 
-    public void SetPoints(params object[] points)
+    public void SetPoints(Vector3 scale, float radius, Vector3 position)
     {
-        var checkPoint = new ParametersChecksPoint(points);
+        var checkPoint = new ParametersChecksPoint(scale, radius, position);
         _checkPoints.Add(checkPoint);
     }
     

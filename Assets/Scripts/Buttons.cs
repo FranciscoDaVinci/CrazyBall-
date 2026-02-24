@@ -54,7 +54,7 @@ public class Buttons : MonoBehaviour, IObservablePlayerState, IObservableButtons
 
     public void Unsuscribe(IObserverButtons obs)
     {
-        if (!_obsButtons.Contains(obs))
+        if (_obsButtons.Contains(obs))
         {
             _obsButtons.Remove(obs);
         }
