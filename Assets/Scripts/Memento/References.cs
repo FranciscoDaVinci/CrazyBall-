@@ -16,7 +16,8 @@ public class References : MonoBehaviour
     {
         foreach (var reference in references)
         {
-            reference.Load();
+            if (reference.isActiveAndEnabled)
+                reference.Load();
         }
     }
 

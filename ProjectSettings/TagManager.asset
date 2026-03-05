@@ -8,11 +8,14 @@ TagManager:
   - Floor
   - Smash
   - Depth
+  - Ball_Normal
+  - Ball_Fast
+  - Ball_Heavy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

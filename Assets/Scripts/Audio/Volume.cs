@@ -9,14 +9,11 @@ public class Volume : MonoBehaviour
     public float sliderValue;
     public Image mute;
 
-    // Start is called before the first frame update
     void Start()
     {
         slider.value = PlayerPrefs.GetFloat("volumeAudio", 0.5f);
         AudioListener.volume = slider.value;
         RevisarSiEstoyMute();
-
-
     }
 
     public void ChangeSlider(float valor)
@@ -25,7 +22,6 @@ public class Volume : MonoBehaviour
         PlayerPrefs.SetFloat("volumeAudio", sliderValue);
         AudioListener.volume = slider.value;
         RevisarSiEstoyMute();
-
     }
 
     public void RevisarSiEstoyMute()

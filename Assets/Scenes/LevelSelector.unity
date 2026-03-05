@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90958c1c5e52f44c8da8795a744a76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Level2
+  sceneToLoad: Level 2
 --- !u!114 &262958101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,7 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90958c1c5e52f44c8da8795a744a76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Level1
+  sceneToLoad: Level 1
 --- !u!114 &905834018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 174949973}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.52316076
+  m_Size: 0.5657568
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1880,7 +1880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90958c1c5e52f44c8da8795a744a76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Level2
+  sceneToLoad: Level 3
 --- !u!114 &1948066834
 MonoBehaviour:
   m_ObjectHideFlags: 0

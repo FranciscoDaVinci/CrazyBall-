@@ -8,13 +8,16 @@ public class Victory : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            Debug.Log("GANASTE!");
             controller.Win();
         }
+
         else
         {
             controller.NotWinYet();
         }
     }
+
 }

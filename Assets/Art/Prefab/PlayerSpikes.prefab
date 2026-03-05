@@ -166,6 +166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 284444854585473113}
-  youwinText: {fileID: 0}
   smashPos1: {fileID: 0}
+  playerbox: {fileID: 0}
+  smashPosbox: {fileID: 0}
+  text: {fileID: 0}
+  openAd: {fileID: 0}
   spawnPoint: {fileID: 0}
+  lifePlayer: {fileID: 0}
+  reference: {fileID: 0}
+  movPlayer: {fileID: 0}

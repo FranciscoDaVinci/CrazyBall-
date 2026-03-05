@@ -14,10 +14,11 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     public float gravity;
     public AudioSource audioBall;
 
+    float dashCooldown = 0.5f;
+    float nextDashTime = 0f;
 
     [SerializeField] Rigidbody controller;
     private Transform camTransform;
-    //Vector3 checkPoint;
     private Ray _jumpRay;
     private float _jumpRayDis = 1.25f;
 
@@ -30,14 +31,14 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         {
             _obsButtons.Suscribe(this);
         }
-        //checkPoint = transform.position;
     }
 
-    private void Start()
+    void Start()
     {
         controller = GetComponent<Rigidbody>();
-        camTransform = Camera.main.transform;
-        //youwinText.SetActive(false);
+
+        if (Camera.main != null)
+            camTransform = Camera.main.transform;
     }
 
     void Update()
@@ -46,26 +47,28 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         Gravity();
     }
 
-    private void Movement()
+    Vector3 GetDirection()
     {
-        Vector3 dirX = Vector3.zero;
-        Vector3 dirZ = Vector3.zero;
-        Vector3 dir = Vector3.zero;
+        Vector3 dirX = camTransform.right * Input.GetAxis("Horizontal");
+        Vector3 dirZ = camTransform.forward * Input.GetAxis("Vertical");
+        Vector3 dir = dirX + dirZ;
 
-        //dir.x = Input.GetAxis("Horizontal");
-        dirX = camTransform.right * Input.GetAxis("Horizontal");
-        //dirZ.z = Input.GetAxis("Vertical");
-        dirZ = camTransform.forward * Input.GetAxis("Vertical");
-        dir = dirX + dirZ;
-        if (dir.magnitude > 1)
-            dir.Normalize();
         if (moveJoystick.InputDirection != Vector3.zero)
         {
             dir = camTransform.right * moveJoystick.InputDirection.x + camTransform.forward * moveJoystick.InputDirection.z;
         }
+
+        if (dir.magnitude > 1)
+            dir.Normalize();
+
+        return dir;
+    }
+
+    private void Movement()
+    {
+        Vector3 dir = GetDirection();
         controller.AddForce(dir * moveSpeed);
 
-        //Sonido
         if (controller.velocity.magnitude > 0.1f && CanJump())
         {
             audioBall.enabled = true;
@@ -79,10 +82,10 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     public void PressButton(string button)
     {
         if (button == "Jump")
-        {
-            Debug.Log("Deberia estar saltando");
             Jump();
-        }
+
+        if (button == "Dash")
+            Dash();
     }
 
     public void Jump()
@@ -103,6 +106,28 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     private void Gravity()
     {
         controller.AddForce(Vector3.down * gravity);
+    }
+
+    public void Dash()
+    {
+
+        if (Time.time < nextDashTime)
+            return;
+
+        if (CanJump())
+        {
+            nextDashTime = Time.time + dashCooldown;
+
+            Vector3 dir = GetDirection();
+
+            if (dir == Vector3.zero)
+                dir = camTransform.forward;
+
+            dir += Vector3.up * 0.3f;
+            dir.Normalize();
+
+            controller.AddForce(dir * 15f, ForceMode.Impulse);
+        }
     }
 }
 

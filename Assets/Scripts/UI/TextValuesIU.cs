@@ -12,7 +12,7 @@ public class TextValuesIU : MonoBehaviour
     {
         if (inGame)
         {
-            TimeSpan left = DateTime.Now - LifePlayer.next;
+            TimeSpan left = LifePlayer.next - DateTime.Now;
             Texts[2].text = left.Seconds.ToString("00");
             if (DateTime.Now > LifePlayer.next)
             {

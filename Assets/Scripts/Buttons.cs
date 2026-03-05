@@ -25,6 +25,14 @@ public class Buttons : MonoBehaviour, IObservablePlayerState, IObservableButtons
         }
     }
 
+    public void Dash()
+    {
+        foreach (var observer in _obsButtons)
+        {
+            observer.PressButton("Dash");
+        }
+    }
+
     #region Suscribirse y Desuscribirse al IObseverPlayerState
     public void Suscribe(IObserverPlayerState obs)
     {

@@ -13,5 +13,4 @@ public abstract class SaveCheckPoints : MonoBehaviour
 
     public abstract void Load();
     public abstract void Save();
-
 }

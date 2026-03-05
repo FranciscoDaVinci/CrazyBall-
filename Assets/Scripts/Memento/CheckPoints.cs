@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckPoints : MonoBehaviour
+public class CheckPoints
 {
     List<ParametersChecksPoint> _checkPoints = new List<ParametersChecksPoint>();
 
@@ -11,7 +10,7 @@ public class CheckPoints : MonoBehaviour
         var checkPoint = new ParametersChecksPoint(scale, radius, position);
         _checkPoints.Add(checkPoint);
     }
-    
+
     public bool HaveReferences()
     {
         return _checkPoints.Count > 0;

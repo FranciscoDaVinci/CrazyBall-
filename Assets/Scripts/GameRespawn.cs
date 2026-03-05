@@ -56,14 +56,17 @@ public class GameRespawn : SaveCheckPoints
     {
         _loading = true;
 
-        while (_checkPoints.HaveReferences())
+        if (_checkPoints.HaveReferences())
         {
             var data = _checkPoints.GoBack();
+
             player.transform.localScale = data.scale;
             playerbox.radius = data.radius;
             player.transform.position = data.position;
+
             Debug.Log("Carga los parametros");
         }
+
         yield return new WaitForSeconds(0.01f);
 
         _loading = false;
@@ -76,14 +79,12 @@ public class GameRespawn : SaveCheckPoints
 
     public override void Save()
     {
-        if (_loading || !movPlayer.CanJump())
-        {
+        if (!gameObject.activeInHierarchy)
             return;
-        }
-        else
-        {
-            Debug.Log("Esta guardando");
-            _checkPoints.SetPoints(player.transform.localScale, playerbox.radius, player.transform.position);
-        }        
+
+        if (_loading || !movPlayer.CanJump())
+            return;
+
+        _checkPoints.SetPoints(player.transform.localScale, playerbox.radius, player.transform.position);
     }
 }
