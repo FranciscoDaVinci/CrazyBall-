@@ -8,6 +8,7 @@ public class SpikeLaunch : MonoBehaviour
     {
         if (collision.transform.CompareTag("Ball_Normal") || collision.transform.CompareTag("Ball_Fast"))
         {
+            GameRespawn.inDanger = true;
             Rigidbody rb = collision.transform.GetComponent<Rigidbody>();
 
             if (rb != null)

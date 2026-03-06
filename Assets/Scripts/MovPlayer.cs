@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MovPlayer : MonoBehaviour, IObserverButtons
 {
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
     [SerializeField] float jumpForce;
 
     [SerializeField] VirtualJoystick moveJoystick;

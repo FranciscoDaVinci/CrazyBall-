@@ -106,7 +106,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.005
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &61910033666623480
 Rigidbody:
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a33edd0ae178e4c8a849225cb2f9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1000
+  moveSpeed: 2000
   jumpForce: 0
   moveJoystick: {fileID: 0}
   gravity: 5000
@@ -167,11 +167,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 284444854585473113}
   smashPos1: {fileID: 0}
-  playerbox: {fileID: 0}
+  playerbox: {fileID: 7743621238115371436}
   smashPosbox: {fileID: 0}
   text: {fileID: 0}
   openAd: {fileID: 0}
   spawnPoint: {fileID: 0}
   lifePlayer: {fileID: 0}
   reference: {fileID: 0}
-  movPlayer: {fileID: 0}
+  movPlayer: {fileID: 8811548093660892635}

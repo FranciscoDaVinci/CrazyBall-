@@ -14,6 +14,7 @@ public class GameRespawn : SaveCheckPoints
     public LifePlayer lifePlayer;
     public References reference;
     public MovPlayer movPlayer;
+    static public bool inDanger;
 
     bool _loading;
 
@@ -26,14 +27,17 @@ public class GameRespawn : SaveCheckPoints
     {
         if (collision.gameObject.CompareTag("Depth"))
         {
+            inDanger = true;
             RespawnPoint();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.CompareTag("Smash"))
         {
+            inDanger = true;
             transform.rotation = smashPos1.rotation;
             transform.localScale = smashPos1.localScale;
             playerbox.radius = smashPosbox.radius;
@@ -46,6 +50,7 @@ public class GameRespawn : SaveCheckPoints
         reference.LoadRef();
         lifePlayer.RestLife(1);
         text.SetLife();
+
         if (LifePlayer.Lifes <= 0)
         {
             openAd.SetActive(true);
@@ -63,7 +68,7 @@ public class GameRespawn : SaveCheckPoints
             player.transform.localScale = data.scale;
             playerbox.radius = data.radius;
             player.transform.position = data.position;
-
+            inDanger = false;
             Debug.Log("Carga los parametros");
         }
 
@@ -79,10 +84,7 @@ public class GameRespawn : SaveCheckPoints
 
     public override void Save()
     {
-        if (!gameObject.activeInHierarchy)
-            return;
-
-        if (_loading || !movPlayer.CanJump())
+        if (_loading || !movPlayer.CanJump() || inDanger)
             return;
 
         _checkPoints.SetPoints(player.transform.localScale, playerbox.radius, player.transform.position);

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2038543606652260261}
   - component: {fileID: 6984407680076806559}
   - component: {fileID: 2894755161488470850}
-  - component: {fileID: 147610474639431431}
   - component: {fileID: 3512639583678179247}
   - component: {fileID: 7629144086293273136}
   - component: {fileID: 5775752858315753267}
@@ -110,27 +109,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &147610474639431431
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1064160030246394807}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Radius: 0.52
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3512639583678179247
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -140,8 +118,8 @@ Rigidbody:
   m_GameObject: {fileID: 1064160030246394807}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 2
+  m_AngularDrag: 2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -266,14 +244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a33edd0ae178e4c8a849225cb2f9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 30
   jumpForce: 0
   moveJoystick: {fileID: 0}
-  youwinText: {fileID: 0}
-  gravity: 2
+  gravity: 15
   audioBall: {fileID: 7629144086293273136}
-  touchSuelo: 1
-  smashPos1: {fileID: 0}
+  controller: {fileID: 3512639583678179247}
 --- !u!114 &6744084573143935346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,5 +263,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1064160030246394807}
+  smashPos1: {fileID: 0}
+  playerbox: {fileID: 2894755161488470850}
+  smashPosbox: {fileID: 0}
+  text: {fileID: 0}
+  openAd: {fileID: 0}
   spawnPoint: {fileID: 0}
-  spawnValue: 20
+  lifePlayer: {fileID: 0}
+  reference: {fileID: 0}
+  movPlayer: {fileID: 5775752858315753267}

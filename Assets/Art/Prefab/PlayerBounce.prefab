@@ -147,10 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5a33edd0ae178e4c8a849225cb2f9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  moveSpeed: 20
   jumpForce: 1200
   moveJoystick: {fileID: 0}
-  gravity: 50
+  gravity: 5
   audioBall: {fileID: 0}
   controller: {fileID: 6469276344568616310}
 --- !u!114 &3116218381084975576
@@ -166,6 +166,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 5299558102460970425}
-  youwinText: {fileID: 0}
   smashPos1: {fileID: 0}
+  playerbox: {fileID: 1339545550704931849}
+  smashPosbox: {fileID: 0}
+  text: {fileID: 0}
+  openAd: {fileID: 0}
   spawnPoint: {fileID: 0}
+  lifePlayer: {fileID: 0}
+  reference: {fileID: 0}
+  movPlayer: {fileID: 1206811948513437312}

@@ -2216,11 +2216,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   breakDelay: 0.3
---- !u!95 &249877902 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1051636436784687521, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
-  m_PrefabInstance: {fileID: 1090581916}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &267694238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4733,10 +4728,10 @@ RectTransform:
   - {fileID: 2018453393}
   m_Father: {fileID: 1358893905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.047}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.15756011, y: 0.26421183}
-  m_AnchoredPosition: {x: 28.5, y: 5}
-  m_SizeDelta: {x: -55.664917, y: 1.9039917}
+  m_AnchorMin: {x: 0.011122807, y: 0.041592594}
+  m_AnchorMax: {x: 0.202, y: 0.40474075}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &631224099
 MonoBehaviour:
@@ -5472,11 +5467,6 @@ RectTransform:
   m_AnchoredPosition: {x: 4.658203, y: 119.446655}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &806178474 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1051636436784687521, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
-  m_PrefabInstance: {fileID: 1078229694}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &813047268
 GameObject:
   m_ObjectHideFlags: 0
@@ -6960,7 +6950,7 @@ PrefabInstance:
     - target: {fileID: 8063284740289781823, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 806178474}
+      objectReference: {fileID: 0}
     - target: {fileID: 8291142181777702787, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
       propertyPath: m_Name
       value: spikes Variant (1)
@@ -7021,7 +7011,7 @@ PrefabInstance:
     - target: {fileID: 8063284740289781823, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 249877902}
+      objectReference: {fileID: 0}
     - target: {fileID: 8291142181777702787, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
       propertyPath: m_Name
       value: spikes Variant (2)
@@ -8823,11 +8813,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!95 &1226913812 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1051636436784687521, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
-  m_PrefabInstance: {fileID: 1381406419}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1231800813
 GameObject:
   m_ObjectHideFlags: 0
@@ -9844,10 +9829,10 @@ PrefabInstance:
     - target: {fileID: 1206811948513437312, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
       propertyPath: audioBall
       value: 
-      objectReference: {fileID: 1608420071}
+      objectReference: {fileID: 4665294}
     - target: {fileID: 1206811948513437312, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1206811948513437312, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
       propertyPath: moveJoystick
@@ -9860,7 +9845,7 @@ PrefabInstance:
     - target: {fileID: 3116218381084975576, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
       propertyPath: openAd
       value: 
-      objectReference: {fileID: 1293902278}
+      objectReference: {fileID: 2094608022}
     - target: {fileID: 3116218381084975576, guid: 78e2cae0272aa13448f2fa040c3b8f3f, type: 3}
       propertyPath: movPlayer
       value: 
@@ -10493,7 +10478,7 @@ PrefabInstance:
     - target: {fileID: 8063284740289781823, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 1226913812}
+      objectReference: {fileID: 0}
     - target: {fileID: 8291142181777702787, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
       propertyPath: m_Name
       value: spikes Variant
@@ -12240,19 +12225,9 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1064160030246394807, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
   m_PrefabInstance: {fileID: 7865950763993333969}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1608420071 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7629144086293273136, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-  m_PrefabInstance: {fileID: 7865950763993333969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1608420094 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6984407680076806559, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-  m_PrefabInstance: {fileID: 7865950763993333969}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1608420096 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3512639583678179247, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
   m_PrefabInstance: {fileID: 7865950763993333969}
   m_PrefabAsset: {fileID: 0}
 --- !u!135 &1608420097 stripped
@@ -13255,6 +13230,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 61910033666623480, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
+      propertyPath: m_Drag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 61910033666623480, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
+      propertyPath: m_AngularDrag
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 284444854585473113, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
       propertyPath: m_Name
       value: SpikeState
@@ -13338,7 +13321,7 @@ PrefabInstance:
     - target: {fileID: 4891474146630644216, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
       propertyPath: openAd
       value: 
-      objectReference: {fileID: 1293902278}
+      objectReference: {fileID: 2094608022}
     - target: {fileID: 4891474146630644216, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
       propertyPath: movPlayer
       value: 
@@ -13371,21 +13354,17 @@ PrefabInstance:
       propertyPath: smashPosbox
       value: 
       objectReference: {fileID: 334006186}
-    - target: {fileID: 7743621238115371436, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
-      propertyPath: m_Radius
-      value: 0.005
-      objectReference: {fileID: 0}
     - target: {fileID: 8811548093660892635, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
       propertyPath: gravity
-      value: 5000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8811548093660892635, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
       propertyPath: audioBall
       value: 
-      objectReference: {fileID: 1608420071}
+      objectReference: {fileID: 1134690903}
     - target: {fileID: 8811548093660892635, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
       propertyPath: moveSpeed
-      value: 2000
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 8811548093660892635, guid: 6d73ad3b3c92adf488ef1641d6bfa3ab, type: 3}
       propertyPath: moveJoystick
@@ -15291,11 +15270,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086639122}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &2094449155 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1051636436784687521, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
-  m_PrefabInstance: {fileID: 5335331519911842609}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2094608022
 GameObject:
   m_ObjectHideFlags: 0
@@ -15862,7 +15836,7 @@ PrefabInstance:
     - target: {fileID: 8063284740289781823, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 2094449155}
+      objectReference: {fileID: 0}
     - target: {fileID: 8291142181777702787, guid: 87a97d1dfaf070946ba3b153267fb76b, type: 3}
       propertyPath: m_Name
       value: spikes
@@ -15954,15 +15928,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2198760388963424719, guid: 299576d4ae61a364eae04561b0565cad, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4123392
+      value: 1.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 2198760388963424719, guid: 299576d4ae61a364eae04561b0565cad, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4123392
+      value: 1.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 2198760388963424719, guid: 299576d4ae61a364eae04561b0565cad, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.4123392
+      value: 1.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 2198760388963424719, guid: 299576d4ae61a364eae04561b0565cad, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16011,6 +15985,10 @@ PrefabInstance:
     - target: {fileID: 2198760388963424719, guid: 299576d4ae61a364eae04561b0565cad, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2198760388963424719, guid: 299576d4ae61a364eae04561b0565cad, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3126435723295929394, guid: 299576d4ae61a364eae04561b0565cad, type: 3}
       propertyPath: m_UseSpriteMesh
@@ -16095,7 +16073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512639583678179247, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: m_Drag
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3512639583678179247, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: m_Mass
@@ -16107,36 +16085,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512639583678179247, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: m_AngularDrag
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5775752858315753267, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-      propertyPath: gravity
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775752858315753267, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-      propertyPath: jumpForce
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775752858315753267, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-      propertyPath: moveSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775752858315753267, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-      propertyPath: smashPos1
-      value: 
-      objectReference: {fileID: 334006185}
-    - target: {fileID: 5775752858315753267, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-      propertyPath: controller
-      value: 
-      objectReference: {fileID: 1608420096}
-    - target: {fileID: 5775752858315753267, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-      propertyPath: touchSuelo
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5775752858315753267, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
-      propertyPath: youwinText
-      value: 
-      objectReference: {fileID: 486858728}
     - target: {fileID: 5775752858315753267, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: moveJoystick
       value: 
@@ -16152,7 +16102,7 @@ PrefabInstance:
     - target: {fileID: 6744084573143935346, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: openAd
       value: 
-      objectReference: {fileID: 1293902278}
+      objectReference: {fileID: 2094608022}
     - target: {fileID: 6744084573143935346, guid: dcb58ee525686a44889a92d1cd9f7d90, type: 3}
       propertyPath: movPlayer
       value: 

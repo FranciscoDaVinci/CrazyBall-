@@ -27,9 +27,12 @@ public class References : MonoBehaviour
         {
             foreach (var reference in references)
             {
-                reference.Save();
+                if (reference.isActiveAndEnabled)
+                {
+                    reference.Save();
+                    break;
+                }
             }
-
             yield return new WaitForSeconds(1f);
         }
     }
