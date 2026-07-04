@@ -6,6 +6,8 @@ public class Controller : MonoBehaviour
     public ParedInput2 paredScript2;
     public View viewScript;
 
+    bool _winHandled;
+
     public void WallOn1()
     {
         viewScript.Billboards[0].SetActive(true);
@@ -26,9 +28,21 @@ public class Controller : MonoBehaviour
         viewScript.Billboards[1].SetActive(false);
     }
 
-
     public void Win()
     {
+        if (_winHandled)
+        {
+            return;
+        }
+
+        ConfirmationManager.Show(
+            "¿Reclamar la recompensa del nivel?",
+            ApplyWin);
+    }
+
+    void ApplyWin()
+    {
+        _winHandled = true;
         viewScript.Billboards[2].SetActive(true);
         Time.timeScale = 0;
     }

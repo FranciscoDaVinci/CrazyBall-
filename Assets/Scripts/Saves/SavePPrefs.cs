@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class SavePPrefs : BaseSave
 {
+    static readonly string[] SaveKeys =
+    {
+        "SkinBase",
+        "SkinSpike",
+        "SkinBounce",
+        "AdsViews",
+        "Money",
+        "Lifes",
+        "LifeTime"
+    };
 
     public override SaveData OnLoad()
     {
@@ -15,14 +25,12 @@ public class SavePPrefs : BaseSave
         data.Lifes = PlayerPrefs.GetInt("Lifes", 5);
         data.TimetoAddLife = PlayerPrefs.GetString("LifeTime");
 
-
         Debug.Log("Se cargo la Skin Normal numero " + data.SelectSkinBasic);
         Debug.Log("Se cargo la Skin Spike numero " + data.SelectSkinSpike);
         Debug.Log("Se cargo la Skin Bounce numero " + data.SelectSkinBounce);
         Debug.Log("El valor de comprado 0/1 se carga en " + data.AdsViews);
         Debug.Log("La cantidad de monedas cargadas es " + data.Money);
         Debug.Log("La cantidad de vidas cargadas es de " + data.Lifes);
-
 
         return data;
     }
@@ -43,5 +51,15 @@ public class SavePPrefs : BaseSave
         Debug.Log("El valor de comprado 0/1 se guarda en " + data.AdsViews);
         Debug.Log("La cantidad de monedas guardadas es " + data.Money);
         Debug.Log("La cantidad de vidas cargadas es de " + data.Lifes);
+    }
+
+    public void ClearAll()
+    {
+        foreach (var key in SaveKeys)
+        {
+            PlayerPrefs.DeleteKey(key);
+        }
+
+        PlayerPrefs.Save();
     }
 }

@@ -3,18 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        Time.timeScale = 1;
+        SceneLoadManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Menu()
     {
-        SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1;
+        ConfirmationManager.Show(
+            "¿Volver al menu principal?",
+            () => SceneLoadManager.LoadScene("MainMenu"));
     }
 
     public void Resume(GameObject gameObject)
@@ -22,6 +20,7 @@ public class LevelManager : MonoBehaviour
         gameObject.SetActive(false);
         Time.timeScale = 1;
     }
+
     public void Pause(GameObject gameObject)
     {
         gameObject.SetActive(true);
@@ -30,7 +29,18 @@ public class LevelManager : MonoBehaviour
 
     public void ExitG()
     {
-        Debug.Log("Cerrando");
-        Application.Quit();
+        ConfirmationManager.Show(
+            "¿Salir del juego?",
+            () =>
+            {
+                var saveManager = FindObjectOfType<SaveManager>();
+                if (saveManager != null)
+                {
+                    saveManager.ButtonPlayerPrefSave();
+                }
+
+                Debug.Log("Cerrando");
+                Application.Quit();
+            });
     }
 }
