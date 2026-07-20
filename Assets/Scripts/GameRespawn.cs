@@ -17,31 +17,51 @@ public class GameRespawn : SaveCheckPoints
     static public bool inDanger;
 
     bool _loading;
-
+    float _smashDelay = 0.5f;
     private void Start()
     {
         text.SetLife();
+        if (RemoteConfigManager.IsReady)
+        {
+            ApplyRemoteSettings(RemoteConfigManager.EnemySmashDelay);
+        }
+        else
+        {
+            RemoteConfigManager.ConfigApplied += OnRemoteConfigApplied;
+        }
+    }
+    void OnDestroy()
+    {
+        RemoteConfigManager.ConfigApplied -= OnRemoteConfigApplied;
+    }
+    void OnRemoteConfigApplied()
+    {
+        if (RemoteConfigManager.IsReady)
+        {
+            ApplyRemoteSettings(RemoteConfigManager.EnemySmashDelay);
+        }
+    }
+
+    public void ApplyRemoteSettings(float smashDelay)
+    {
+        _smashDelay = smashDelay;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Depth"))
         {
-            inDanger = true;
             RespawnPoint();
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.gameObject.CompareTag("Smash"))
         {
-            inDanger = true;
             transform.rotation = smashPos1.rotation;
             transform.localScale = smashPos1.localScale;
             playerbox.radius = smashPosbox.radius;
-            Invoke(nameof(RespawnPoint), 0.5f);
+            Invoke(nameof(RespawnPoint), _smashDelay);
         }
     }
 

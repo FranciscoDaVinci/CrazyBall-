@@ -39,8 +39,38 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
 
         if (Camera.main != null)
             camTransform = Camera.main.transform;
+        if (RemoteConfigManager.IsReady)
+        {
+            ApplyRemoteSettings(
+                RemoteConfigManager.PlayerMoveSpeed,
+                RemoteConfigManager.PlayerJumpForce,
+                RemoteConfigManager.PlayerGravity);
+        }
+        else
+        {
+            RemoteConfigManager.ConfigApplied += OnRemoteConfigApplied;
+        }
     }
-
+    void OnDestroy()
+    {
+        RemoteConfigManager.ConfigApplied -= OnRemoteConfigApplied;
+    }
+    void OnRemoteConfigApplied()
+    {
+        if (RemoteConfigManager.IsReady)
+        {
+            ApplyRemoteSettings(
+                RemoteConfigManager.PlayerMoveSpeed,
+                RemoteConfigManager.PlayerJumpForce,
+                RemoteConfigManager.PlayerGravity);
+        }
+    }
+    public void ApplyRemoteSettings(float speed, float jump, float gravityValue)
+    {
+        moveSpeed = speed;
+        jumpForce = jump;
+        gravity = gravityValue;
+    }
     void Update()
     {
         Movement();

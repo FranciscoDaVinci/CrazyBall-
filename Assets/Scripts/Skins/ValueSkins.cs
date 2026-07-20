@@ -13,32 +13,40 @@ public class ValueSkins : MonoBehaviour
     public GameObject Obtained;
     public GameObject[] NotObtained;
 
-    public void SkinNormal(int value)
+    int _baseSkinValue;
+    void Awake()
     {
-        if (skinValue > AddsRewarded.Money)
-        {
-            Reward.SetActive(true);
-            Debug.Log("No tiene el dinero suficiente como para comprar esta Skin");
-            return;
-        }
-
-        ConfirmationManager.Show(
-            "¿Comprar esta skin por " + skinValue + " monedas?",
-            () => CompleteSkinNormal(value));
+        _baseSkinValue = skinValue;
     }
-
-    public void SkinSpike(int value)
+    void Start()
     {
-        if (skinValue > AddsRewarded.Money)
+        if (RemoteConfigManager.IsReady)
         {
-            Reward.SetActive(true);
-            Debug.Log("No tiene el dinero suficiente como para comprar esta Skin");
+            ApplyRemoteSettings(RemoteConfigManager.SkinPriceMultiplier);
+        }
+        else
+        {
+            RemoteConfigManager.ConfigApplied += OnRemoteConfigApplied;
+        }
+    }
+    void OnDestroy()
+    {
+        RemoteConfigManager.ConfigApplied -= OnRemoteConfigApplied;
+    }
+    void OnRemoteConfigApplied()
+    {
+        if (RemoteConfigManager.IsReady)
+        {
+            ApplyRemoteSettings(RemoteConfigManager.SkinPriceMultiplier);
+        }
+    }
+    public void ApplyRemoteSettings(float priceMultiplier)
+    {
+        if (buyed == 1 || _baseSkinValue <= 0)
+        {
             return;
         }
-
-        ConfirmationManager.Show(
-            "¿Comprar esta skin por " + skinValue + " monedas?",
-            () => CompleteSkinSpike(value));
+        skinValue = Mathf.Max(1, Mathf.RoundToInt(_baseSkinValue * priceMultiplier));
     }
 
     public void SkinBounce(int value)

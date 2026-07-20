@@ -17,8 +17,37 @@ public class LifePlayer : MonoBehaviour
 
     public void Start()
     {
-        maxLife = maxLifeValue;
+        if (RemoteConfigManager.IsReady)
+        {
+            ApplyRemoteSettings(RemoteConfigManager.MaxLives);
+        }
+        else
+        {
+            maxLife = maxLifeValue;
+            RemoteConfigManager.ConfigApplied += OnRemoteConfigApplied;
+        }
         corrutine = StartCoroutine(UpdateLife());
+        txtValue.SetLife();
+    }
+    void OnDestroy()
+    {
+        RemoteConfigManager.ConfigApplied -= OnRemoteConfigApplied;
+    }
+    void OnRemoteConfigApplied()
+    {
+        if (RemoteConfigManager.IsReady)
+        {
+            ApplyRemoteSettings(RemoteConfigManager.MaxLives);
+        }
+    }
+    public void ApplyRemoteSettings(int maxLives)
+    {
+        maxLifeValue = maxLives;
+        maxLife = maxLives;
+        if (Lifes > maxLifeValue)
+        {
+            Lifes = maxLifeValue;
+        }
         txtValue.SetLife();
     }
 
