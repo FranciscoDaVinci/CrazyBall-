@@ -66,9 +66,14 @@ public class PlayerStates : MonoBehaviour, IObserverPlayerState
         {
             if (states == i)
             {
-                _ballPosition = i;                
+                _ballPosition = i;
                 Debug.Log(_ballPosition + " Posicion de la bola");
                 States();
+
+                if (TutorialManager.Instance != null)
+                {
+                    TutorialManager.Instance.PlayerChangedState();
+                }
             }
         }
     }
