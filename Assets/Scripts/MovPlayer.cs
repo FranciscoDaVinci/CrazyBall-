@@ -170,10 +170,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
             controller.AddForce(dir * 15f, ForceMode.Impulse);
         }
 
-        if (TutorialManager.Instance != null)
-        {
-            TutorialManager.Instance.PlayerDashed();
-        }
+
 
     }
 }
