@@ -75,6 +75,10 @@ public class GameRespawn : SaveCheckPoints
         {
             openAd.SetActive(true);
         }
+        else
+        {
+            AdsManager.ShowDeathInterstitial();
+        }
     }
 
     IEnumerator CorLoad()

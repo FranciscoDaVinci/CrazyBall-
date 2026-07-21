@@ -180,52 +180,51 @@ public class SceneLoadManager : MonoBehaviour
 
         HideLoadingUI();
         _isLoading = false;
+        UpdateAdsForLoadedScene();
     }
-
     IEnumerator LoadSceneRoutine(int buildIndex)
     {
         _isLoading = true;
         ShowLoadingUI(0f);
-
         var asyncLoad = SceneManager.LoadSceneAsync(buildIndex);
         asyncLoad.allowSceneActivation = false;
-
         while (asyncLoad.progress < 0.9f)
         {
             UpdateLoadingUI(asyncLoad.progress / 0.9f);
             yield return null;
         }
-
         UpdateLoadingUI(1f);
         yield return null;
-
         asyncLoad.allowSceneActivation = true;
-
         while (!asyncLoad.isDone)
         {
             yield return null;
         }
-
         HideLoadingUI();
         _isLoading = false;
+        UpdateAdsForLoadedScene();
     }
-
     void ShowLoadingUI(float progress)
     {
         _canvas.gameObject.SetActive(true);
         UpdateLoadingUI(progress);
     }
-
     void HideLoadingUI()
     {
         _canvas.gameObject.SetActive(false);
     }
-
     void UpdateLoadingUI(float progress)
     {
         var clampedProgress = Mathf.Clamp01(progress);
         _progressBar.value = clampedProgress;
         _progressText.text = Mathf.RoundToInt(clampedProgress * 100f) + "%";
+    }
+    void UpdateAdsForLoadedScene()
+    {
+        if (AdsManager.instance != null)
+        {
+            AdsManager.instance.UpdateBannerForScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
 

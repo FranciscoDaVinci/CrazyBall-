@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     {
         ConfirmationManager.Show(
             "¿Volver al menu principal?",
-            () => SceneLoadManager.LoadScene("MainMenu"));
+            () => AdsManager.ShowMenuInterstitial(() => SceneLoadManager.LoadScene("MainMenu")));
     }
 
     public void Resume(GameObject gameObject)
