@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class TutorialTrigger : MonoBehaviour
 {
+    [SerializeField] private string[] validTags;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ball_Normal") ||other.CompareTag("Ball_Fast") || other.CompareTag("Ball_Heavy"))
+        Debug.Log("Entró al trigger: " + other.name + " | Tag: " + other.tag);
 
-            TutorialManager.Instance.FinishTutorial();
+        foreach (string tag in validTags)
+        {
+            if (other.CompareTag(tag))
+            {
+                Debug.Log("Tag válido: " + tag);
+                TutorialManager.Instance?.CompleteFinish();
+                return;
+            }
+        }
     }
 }
+

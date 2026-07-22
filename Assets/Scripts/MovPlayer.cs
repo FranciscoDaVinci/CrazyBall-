@@ -97,12 +97,13 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     private void Movement()
     {
         Vector3 dir = GetDirection();
-        controller.AddForce(dir * moveSpeed);
 
-        if (dir.magnitude > 0.1f && TutorialManager.Instance != null)
+        if (dir.magnitude > 0.1f)
         {
-            TutorialManager.Instance.PlayerMoved();
+            TutorialManager.Instance?.CompleteMove();
         }
+
+        controller.AddForce(dir * moveSpeed);
 
         if (controller.velocity.magnitude > 0.1f && CanJump())
         {
@@ -129,10 +130,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
         {
             controller.AddForce(Vector3.up * jumpForce);
 
-            if (TutorialManager.Instance != null)
-            {
-                TutorialManager.Instance.PlayerJumped();
-            }
+            TutorialManager.Instance?.CompleteJump();
 
             Debug.Log("Deberia estar saltando x2");
         }
@@ -151,7 +149,6 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
 
     public void Dash()
     {
-
         if (Time.time < nextDashTime)
             return;
 
@@ -168,10 +165,9 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
             dir.Normalize();
 
             controller.AddForce(dir * 15f, ForceMode.Impulse);
+
+            TutorialManager.Instance?.CompleteDash();
         }
-
-
-
     }
 }
 

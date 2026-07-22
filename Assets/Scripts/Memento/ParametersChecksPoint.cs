@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParametersChecksPoint : MonoBehaviour
+public class ParametersChecksPoint
 {
     public Vector3 scale;
     public float radius;

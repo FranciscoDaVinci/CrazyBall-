@@ -72,7 +72,14 @@ public class PlayerStates : MonoBehaviour, IObserverPlayerState
 
                 if (TutorialManager.Instance != null)
                 {
-                    TutorialManager.Instance.PlayerChangedState();
+                    if (i == 1) // Bounce
+                    {
+                        TutorialManager.Instance.CompleteBounce();
+                    }
+                    else if (i == 2) // Spike
+                    {
+                        TutorialManager.Instance.CompleteSpike();
+                    }
                 }
             }
         }

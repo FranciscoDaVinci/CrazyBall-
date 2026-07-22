@@ -1,55 +1,38 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
 {
-    public static TutorialManager Instance { get; private set; }
+    public static TutorialManager Instance;
 
     [Header("UI")]
-    [SerializeField] private GameObject tutorialPanel;
-    [SerializeField] private TextMeshProUGUI tutorialText;
+    [SerializeField] GameObject tutorialPanel;
+    [SerializeField] TMP_Text tutorialText;
 
     [Header("Mensajes")]
-    [TextArea]
-    [SerializeField] private string moveMessage = "Usa WASD para moverte.";
+    [TextArea] public string moveMessage;
+    [TextArea] public string jumpMessage;
+    [TextArea] public string stateMessage;
+    [TextArea] public string dashMessage;
+    [TextArea] public string finishMessage;
 
-    [TextArea]
-    [SerializeField] private string jumpMessage = "Presiona ESPACIO para saltar.";
+    private int currentStep = 0;
 
-    [TextArea]
-    [SerializeField] private string stateMessage = "Cambia el estado de la pelota.";
+    private bool bounceSelected = false;
 
-    [TextArea]
-    [SerializeField] private string dashMessage = "Realiza un Dash.";
-
-    [TextArea]
-    [SerializeField] private string finishMessage = "¡Tutorial completado! Llega a la meta.";
-
-    private int currentStep;
-
-    void Awake()
+    private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
     }
 
-    void Start()
+    private void Start()
     {
-        currentStep = 0;
         ShowCurrentStep();
     }
 
     void ShowCurrentStep()
     {
-        tutorialPanel.SetActive(true);
-
         switch (currentStep)
         {
             case 0:
@@ -73,44 +56,91 @@ public class TutorialManager : MonoBehaviour
                 break;
 
             default:
-                tutorialPanel.SetActive(false);
                 break;
         }
     }
 
-    void NextStep()
+    public void CompleteMove()
     {
+        if (currentStep != 0)
+            return;
+
         currentStep++;
         ShowCurrentStep();
     }
 
-    public void PlayerMoved()
+    public void CompleteJump()
     {
-        if (currentStep == 0)
-            NextStep();
+        if (currentStep != 2)
+            return;
+
+        if (!bounceSelected)
+            return;
+
+        bounceSelected = false;
+
+        currentStep++;
+        ShowCurrentStep();
     }
 
-    public void PlayerJumped()
+    public void CompleteBounce()
     {
-        if (currentStep == 1)
-            NextStep();
+        if (currentStep != 2)
+            return;
+
+        bounceSelected = true;
     }
 
-    public void PlayerChangedState()
+    public void CompleteSpike()
+    {
+        if (currentStep != 3)
+            return;
+
+        currentStep++;
+        ShowCurrentStep();
+    }
+
+    public void CompleteState()
     {
         if (currentStep == 2)
-            NextStep();
+        {
+            currentStep++;
+            ShowCurrentStep();
+        }
     }
 
-    public void PlayerDashed()
+    public void CompleteDash()
     {
-        if (currentStep == 3)
-            NextStep();
+        if (currentStep != 1)
+            return;
+
+        currentStep++;
+        ShowCurrentStep();
     }
 
-    public void FinishTutorial()
+    public void CompleteFinish()
     {
-        if (currentStep == 4)
-            NextStep();
+        Debug.Log("Tutorial terminado");
+
+        if (currentStep != 4)
+            return;
+
+        StartCoroutine(HideTutorialAfterDelay());
+    }
+
+    public int GetCurrentStep()
+    {
+        return currentStep;
+    }
+
+    private IEnumerator HideTutorialAfterDelay()
+    {
+        Debug.Log("Esperando 2 segundos...");
+
+        yield return new WaitForSeconds(2f);
+
+        Debug.Log("Ocultando panel");
+
+        tutorialPanel.SetActive(false);
     }
 }
