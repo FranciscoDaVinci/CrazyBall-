@@ -21,9 +21,18 @@ public class TutorialManager : MonoBehaviour
 
     private bool bounceSelected = false;
 
+    private bool waitingMove = false;
+
+    private bool changingStep = false;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    public bool CanUseJoystick()
+    {
+        return currentStep == 0 || currentStep == 4;
     }
 
     private void Start()
@@ -53,6 +62,7 @@ public class TutorialManager : MonoBehaviour
 
             case 4:
                 tutorialText.text = finishMessage;
+                StartCoroutine(HideTutorialAfterDelay());
                 break;
 
             default:
@@ -62,11 +72,11 @@ public class TutorialManager : MonoBehaviour
 
     public void CompleteMove()
     {
-        if (currentStep != 0)
+        if (currentStep != 0 || waitingMove)
             return;
 
-        currentStep++;
-        ShowCurrentStep();
+        waitingMove = true;
+        StartCoroutine(CompleteMoveDelay());
     }
 
     public void CompleteJump()
@@ -79,8 +89,8 @@ public class TutorialManager : MonoBehaviour
 
         bounceSelected = false;
 
-        currentStep++;
-        ShowCurrentStep();
+        NextStep();
+
     }
 
     public void CompleteBounce()
@@ -96,16 +106,16 @@ public class TutorialManager : MonoBehaviour
         if (currentStep != 3)
             return;
 
-        currentStep++;
-        ShowCurrentStep();
+        NextStep();
+
     }
 
     public void CompleteState()
     {
         if (currentStep == 2)
         {
-            currentStep++;
-            ShowCurrentStep();
+            NextStep();
+
         }
     }
 
@@ -114,18 +124,16 @@ public class TutorialManager : MonoBehaviour
         if (currentStep != 1)
             return;
 
-        currentStep++;
-        ShowCurrentStep();
+        NextStep();
+
     }
 
     public void CompleteFinish()
     {
-        Debug.Log("Tutorial terminado");
-
         if (currentStep != 4)
             return;
 
-        StartCoroutine(HideTutorialAfterDelay());
+        Debug.Log("Tutorial terminado");
     }
 
     public int GetCurrentStep()
@@ -133,14 +141,51 @@ public class TutorialManager : MonoBehaviour
         return currentStep;
     }
 
+    private void NextStep()
+    {
+        if (changingStep)
+            return;
+
+        changingStep = true;
+
+        currentStep++;
+        ShowCurrentStep();
+
+        changingStep = false;
+    }
+
     private IEnumerator HideTutorialAfterDelay()
     {
-        Debug.Log("Esperando 2 segundos...");
-
-        yield return new WaitForSeconds(2f);
-
-        Debug.Log("Ocultando panel");
-
+        yield return new WaitForSeconds(3f);
         tutorialPanel.SetActive(false);
     }
+
+    private IEnumerator CompleteMoveDelay()
+    {
+        yield return new WaitForSeconds(3f);
+
+        waitingMove = false;
+        NextStep();
+    }
+
+    public bool CanUseDash()
+    {
+        return currentStep >= 1;
+    }
+
+    public bool CanChangeBall()
+    {
+        return currentStep >= 2;
+    }
+
+    public bool CanJump()
+    {
+        return currentStep >= 2 && bounceSelected;
+    }
+
+    public bool CanUseSpike()
+    {
+        return currentStep >= 3;
+    }
+
 }

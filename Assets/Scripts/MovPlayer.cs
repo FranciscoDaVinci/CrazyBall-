@@ -124,8 +124,12 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
             Dash();
     }
 
+
     public void Jump()
     {
+        if (TutorialManager.Instance != null && !TutorialManager.Instance.CanJump())
+            return;
+
         if (CanJump())
         {
             controller.AddForce(Vector3.up * jumpForce);
@@ -151,6 +155,9 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     {
         if (Time.time < nextDashTime)
             return;
+
+        if (TutorialManager.Instance != null && !TutorialManager.Instance.CanUseDash())
+    return;
 
         if (CanJump())
         {

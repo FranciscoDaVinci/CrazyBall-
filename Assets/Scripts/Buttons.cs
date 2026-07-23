@@ -6,14 +6,49 @@ public class Buttons : MonoBehaviour, IObservablePlayerState, IObservableButtons
     List<IObserverPlayerState> _obsPlayerState = new();
     List<IObserverButtons> _obsButtons = new();
     [SerializeField] int _states;
+    [SerializeField] GameObject jumpButton;
+    [SerializeField] GameObject dashButton;
 
     public void ChangeState(int state)
     {
+        if (TutorialManager.Instance != null)
+        {
+            // Mientras no se habiliten las pelotas
+            if (!TutorialManager.Instance.CanChangeBall())
+                return;
+
+            // En el paso Bounce no permitir Spike
+            if (state == 2 && !TutorialManager.Instance.CanUseSpike())
+                return;
+        }
+
         _states = state;
 
         foreach (var observer in _obsPlayerState)
         {
             observer.ChangeState(_states);
+        }
+
+        // Actualizar la interfaz
+        switch (state)
+        {
+            // Normal
+            case 0:
+                jumpButton.SetActive(false);
+                dashButton.SetActive(true);
+                break;
+
+            // Bounce
+            case 1:
+                jumpButton.SetActive(true);
+                dashButton.SetActive(false);
+                break;
+
+            // Spike
+            case 2:
+                jumpButton.SetActive(false);
+                dashButton.SetActive(true);
+                break;
         }
     }
 
