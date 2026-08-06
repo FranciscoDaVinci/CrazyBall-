@@ -79,13 +79,26 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
 
     Vector3 GetDirection()
     {
-        Vector3 dirX = camTransform.right * Input.GetAxis("Horizontal");
-        Vector3 dirZ = camTransform.forward * Input.GetAxis("Vertical");
-        Vector3 dir = dirX + dirZ;
+        Vector3 dir = Vector3.zero;
 
-        if (moveJoystick.InputDirection != Vector3.zero)
+        if (ControlManager.Instance != null)
         {
-            dir = camTransform.right * moveJoystick.InputDirection.x + camTransform.forward * moveJoystick.InputDirection.z;
+            switch (ControlManager.Instance.CurrentMode)
+            {
+                case ControlMode.Keyboard:
+
+                    dir = camTransform.right * Input.GetAxis("Horizontal") +
+                          camTransform.forward * Input.GetAxis("Vertical");
+
+                    break;
+
+                case ControlMode.Mobile:
+
+                    dir = camTransform.right * moveJoystick.InputDirection.x +
+                          camTransform.forward * moveJoystick.InputDirection.z;
+
+                    break;
+            }
         }
 
         if (dir.magnitude > 1)

@@ -25,18 +25,39 @@ public class CameraControl : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            movCamera(true);
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-            movCamera(false);
+        if (ControlManager.Instance == null)
+            return;
 
+        switch (ControlManager.Instance.CurrentMode)
+        {
+            case ControlMode.Keyboard:
+
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    movCamera(true);
+
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                    movCamera(false);
+
+                break;
+
+            case ControlMode.Mobile:
+
+                HandleSwipe();
+
+                break;
+        }
+    }
+    private void HandleSwipe()
+    {
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
         {
             touchPosition = Input.mousePosition;
         }
+
         if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
             float swipeForce = touchPosition.x - Input.mousePosition.x;
+
             if (Mathf.Abs(swipeForce) > swipeResistance)
             {
                 if (swipeForce < 0)
@@ -46,6 +67,7 @@ public class CameraControl : MonoBehaviour
             }
         }
     }
+
     private void FixedUpdate()
     {
         position = lookAt.position + offset;
