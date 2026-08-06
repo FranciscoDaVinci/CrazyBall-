@@ -73,6 +73,11 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.Log("W detectada");
+        }
+
         Movement();
         Gravity();
     }

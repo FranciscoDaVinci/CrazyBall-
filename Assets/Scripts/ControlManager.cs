@@ -12,6 +12,8 @@ public class ControlManager : MonoBehaviour
 {
     public static ControlManager Instance;
 
+    [SerializeField] private GameObject joystickUI;
+
     public ControlMode CurrentMode { get; private set; }
 
     private const string ControlKey = "ControlMode";
@@ -37,12 +39,22 @@ public class ControlManager : MonoBehaviour
         PlayerPrefs.SetInt(ControlKey, (int)mode);
         PlayerPrefs.Save();
 
+        if (joystickUI != null)
+        {
+            joystickUI.SetActive(mode == ControlMode.Mobile);
+        }
+
         Debug.Log("Modo de control seleccionado: " + mode);
     }
 
     private void LoadControlMode()
     {
         CurrentMode = (ControlMode)PlayerPrefs.GetInt(ControlKey, (int)ControlMode.Mobile);
+
+        if (joystickUI != null)
+        {
+            joystickUI.SetActive(CurrentMode == ControlMode.Mobile);
+        }
 
         Debug.Log("Modo de control cargado: " + CurrentMode);
     }
