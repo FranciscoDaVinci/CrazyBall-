@@ -25,6 +25,8 @@ public class TutorialManager : MonoBehaviour
 
     private bool changingStep = false;
 
+    private bool tutorialFinished = false;
+
     private void Awake()
     {
         Instance = this;
@@ -133,7 +135,11 @@ public class TutorialManager : MonoBehaviour
         if (currentStep != 4)
             return;
 
-        Debug.Log("Tutorial terminado");
+        tutorialFinished = true;
+
+        Debug.Log("TUTORIAL TERMINADO");
+
+        StartCoroutine(HideTutorialAfterDelay());
     }
 
     public int GetCurrentStep()
@@ -149,7 +155,15 @@ public class TutorialManager : MonoBehaviour
         changingStep = true;
 
         currentStep++;
-        ShowCurrentStep();
+
+        if (currentStep >= 5)
+        {
+            tutorialFinished = true;
+        }
+        else
+        {
+            ShowCurrentStep();
+        }
 
         changingStep = false;
     }
@@ -162,7 +176,7 @@ public class TutorialManager : MonoBehaviour
 
     private IEnumerator CompleteMoveDelay()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
 
         waitingMove = false;
         NextStep();
@@ -170,17 +184,26 @@ public class TutorialManager : MonoBehaviour
 
     public bool CanUseDash()
     {
+        if (tutorialFinished)
+            return true;
+
         return currentStep >= 1;
     }
 
     public bool CanChangeBall()
     {
+        if (tutorialFinished)
+            return true;
+
         return currentStep >= 2;
     }
 
     public bool CanJump()
     {
-        return currentStep >= 2 && bounceSelected;
+        if (tutorialFinished)
+            return true;
+
+        return currentStep == 2 && bounceSelected;
     }
 
     public bool CanUseSpike()

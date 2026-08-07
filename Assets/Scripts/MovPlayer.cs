@@ -73,10 +73,6 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Debug.Log("W detectada");
-        }
 
         Movement();
         Gravity();
@@ -114,6 +110,17 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
 
     private void Movement()
     {
+        if (TutorialManager.Instance != null)
+        {
+            int step = TutorialManager.Instance.GetCurrentStep();
+
+            if (step > 0 && step < 4)
+            {
+                controller.velocity = new Vector3(0, controller.velocity.y, 0);
+                return;
+            }
+        }
+
         Vector3 dir = GetDirection();
 
         if (dir.magnitude > 0.1f)
@@ -145,6 +152,16 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
 
     public void Jump()
     {
+        Debug.Log("JUMP PRESIONADO");
+
+        if (TutorialManager.Instance != null)
+        {
+            Debug.Log("Paso tutorial: " + TutorialManager.Instance.GetCurrentStep());
+            Debug.Log("Tutorial CanJump: " + TutorialManager.Instance.CanJump());
+        }
+
+        Debug.Log("MovPlayer CanJump: " + CanJump());
+
         if (TutorialManager.Instance != null && !TutorialManager.Instance.CanJump())
             return;
 
@@ -154,7 +171,7 @@ public class MovPlayer : MonoBehaviour, IObserverButtons
 
             TutorialManager.Instance?.CompleteJump();
 
-            Debug.Log("Deberia estar saltando x2");
+            Debug.Log("SALTO EJECUTADO");
         }
     }
 
